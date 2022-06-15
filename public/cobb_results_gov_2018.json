@@ -1,0 +1,848 @@
+﻿[
+  {
+    "Precinct": "Acworth 1A",
+    "Kemp": "1433",
+    "Abrams": "1453",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "Acworth 1B",
+    "Kemp": "1453",
+    "Abrams": "1195",
+    "Metz": "35"
+  },
+  {
+    "Precinct": "Acworth 1C",
+    "Kemp": "848",
+    "Abrams": "1627",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "Addison 01",
+    "Kemp": "853",
+    "Abrams": "749",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Austell 1A",
+    "Kemp": "387",
+    "Abrams": "1955",
+    "Metz": "4"
+  },
+  {
+    "Precinct": "Bells Ferry 02",
+    "Kemp": "942",
+    "Abrams": "831",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "Bells Ferry 03",
+    "Kemp": "1873",
+    "Abrams": "1567",
+    "Metz": "74"
+  },
+  {
+    "Precinct": "Big Shanty 01",
+    "Kemp": "752",
+    "Abrams": "664",
+    "Metz": "22"
+  },
+  {
+    "Precinct": "Big Shanty 02",
+    "Kemp": "1039",
+    "Abrams": "892",
+    "Metz": "23"
+  },
+  {
+    "Precinct": "Baker 01",
+    "Kemp": "1013",
+    "Abrams": "1484",
+    "Metz": "45"
+  },
+  {
+    "Precinct": "Birney 01",
+    "Kemp": "509",
+    "Abrams": "953",
+    "Metz": "15"
+  },
+  {
+    "Precinct": "Birney 02",
+    "Kemp": "813",
+    "Abrams": "1556",
+    "Metz": "27"
+  },
+  {
+    "Precinct": "Bryant 01",
+    "Kemp": "66",
+    "Abrams": "1216",
+    "Metz": "3"
+  },
+  {
+    "Precinct": "Bryant 02",
+    "Kemp": "100",
+    "Abrams": "2350",
+    "Metz": "8"
+  },
+  {
+    "Precinct": "Blackwell 01",
+    "Kemp": "776",
+    "Abrams": "824",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Chattahoochee 01",
+    "Kemp": "683",
+    "Abrams": "2280",
+    "Metz": "40"
+  },
+  {
+    "Precinct": "Cheatham Hill 02",
+    "Kemp": "1172",
+    "Abrams": "758",
+    "Metz": "37"
+  },
+  {
+    "Precinct": "Cheatham Hill 03",
+    "Kemp": "1458",
+    "Abrams": "1200",
+    "Metz": "40"
+  },
+  {
+    "Precinct": "Chalker 01",
+    "Kemp": "1048",
+    "Abrams": "1680",
+    "Metz": "45"
+  },
+  {
+    "Precinct": "Clarkdale 01",
+    "Kemp": "385",
+    "Abrams": "645",
+    "Metz": "8"
+  },
+  {
+    "Precinct": "Clarkdale 02",
+    "Kemp": "804",
+    "Abrams": "2156",
+    "Metz": "21"
+  },
+  {
+    "Precinct": "Cooper 01",
+    "Kemp": "504",
+    "Abrams": "2033",
+    "Metz": "15"
+  },
+  {
+    "Precinct": "Chestnut Ridge 01",
+    "Kemp": "1270",
+    "Abrams": "835",
+    "Metz": "19"
+  },
+  {
+    "Precinct": "Dickerson 01",
+    "Kemp": "1080",
+    "Abrams": "828",
+    "Metz": "38"
+  },
+  {
+    "Precinct": "Dobbins 01",
+    "Kemp": "531",
+    "Abrams": "2170",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "Dowell 01",
+    "Kemp": "986",
+    "Abrams": "1076",
+    "Metz": "30"
+  },
+  {
+    "Precinct": "Dodgen 01",
+    "Kemp": "859",
+    "Abrams": "565",
+    "Metz": "30"
+  },
+  {
+    "Precinct": "Durham 01",
+    "Kemp": "1853",
+    "Abrams": "756",
+    "Metz": "32"
+  },
+  {
+    "Precinct": "Davis 01",
+    "Kemp": "757",
+    "Abrams": "556",
+    "Metz": "23"
+  },
+  {
+    "Precinct": "Eastside 01",
+    "Kemp": "1235",
+    "Abrams": "874",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Eastside 02",
+    "Kemp": "1552",
+    "Abrams": "1158",
+    "Metz": "44"
+  },
+  {
+    "Precinct": "Elizabeth 01",
+    "Kemp": "520",
+    "Abrams": "1224",
+    "Metz": "18"
+  },
+  {
+    "Precinct": "Elizabeth 02",
+    "Kemp": "884",
+    "Abrams": "660",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Elizabeth 03",
+    "Kemp": "1053",
+    "Abrams": "742",
+    "Metz": "31"
+  },
+  {
+    "Precinct": "Elizabeth 04",
+    "Kemp": "619",
+    "Abrams": "1022",
+    "Metz": "25"
+  },
+  {
+    "Precinct": "Elizabeth 05",
+    "Kemp": "1035",
+    "Abrams": "887",
+    "Metz": "32"
+  },
+  {
+    "Precinct": "East Piedmont 01",
+    "Kemp": "622",
+    "Abrams": "767",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Fair Oaks 02",
+    "Kemp": "727",
+    "Abrams": "2031",
+    "Metz": "30"
+  },
+  {
+    "Precinct": "Fair Oaks 04",
+    "Kemp": "602",
+    "Abrams": "1435",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Fullers Park 01",
+    "Kemp": "1224",
+    "Abrams": "993",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "Ford 01",
+    "Kemp": "1451",
+    "Abrams": "572",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Frey 01",
+    "Kemp": "1051",
+    "Abrams": "524",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Garrison Mill 01",
+    "Kemp": "1046",
+    "Abrams": "844",
+    "Metz": "31"
+  },
+  {
+    "Precinct": "Gritters 01",
+    "Kemp": "1291",
+    "Abrams": "1034",
+    "Metz": "52"
+  },
+  {
+    "Precinct": "Harmony-Leland 01",
+    "Kemp": "577",
+    "Abrams": "3087",
+    "Metz": "24"
+  },
+  {
+    "Precinct": "Harrison 01",
+    "Kemp": "1401",
+    "Abrams": "572",
+    "Metz": "42"
+  },
+  {
+    "Precinct": "Hightower 01",
+    "Kemp": "1585",
+    "Abrams": "1164",
+    "Metz": "52"
+  },
+  {
+    "Precinct": "Hayes 01",
+    "Kemp": "1684",
+    "Abrams": "848",
+    "Metz": "41"
+  },
+  {
+    "Precinct": "Kennesaw 1A",
+    "Kemp": "585",
+    "Abrams": "641",
+    "Metz": "14"
+  },
+  {
+    "Precinct": "Kennesaw 2A",
+    "Kemp": "1061",
+    "Abrams": "991",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Kennesaw 3A",
+    "Kemp": "1077",
+    "Abrams": "2013",
+    "Metz": "31"
+  },
+  {
+    "Precinct": "Kennesaw 4A",
+    "Kemp": "996",
+    "Abrams": "1026",
+    "Metz": "35"
+  },
+  {
+    "Precinct": "Kennesaw 5A",
+    "Kemp": "1501",
+    "Abrams": "1852",
+    "Metz": "44"
+  },
+  {
+    "Precinct": "Kell 01",
+    "Kemp": "772",
+    "Abrams": "509",
+    "Metz": "39"
+  },
+  {
+    "Precinct": "Kemp 01",
+    "Kemp": "900",
+    "Abrams": "358",
+    "Metz": "23"
+  },
+  {
+    "Precinct": "Kemp 02",
+    "Kemp": "1545",
+    "Abrams": "1036",
+    "Metz": "29"
+  },
+  {
+    "Precinct": "Kemp 03",
+    "Kemp": "1912",
+    "Abrams": "694",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Lassiter 01",
+    "Kemp": "1425",
+    "Abrams": "935",
+    "Metz": "38"
+  },
+  {
+    "Precinct": "Lindley 01",
+    "Kemp": "650",
+    "Abrams": "2397",
+    "Metz": "32"
+  },
+  {
+    "Precinct": "Lost Mountain 01",
+    "Kemp": "1487",
+    "Abrams": "888",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Lost Mountain 02",
+    "Kemp": "1919",
+    "Abrams": "761",
+    "Metz": "19"
+  },
+  {
+    "Precinct": "Lost Mountain 03",
+    "Kemp": "2225",
+    "Abrams": "1199",
+    "Metz": "50"
+  },
+  {
+    "Precinct": "Lost Mountain 04",
+    "Kemp": "1136",
+    "Abrams": "614",
+    "Metz": "18"
+  },
+  {
+    "Precinct": "Mableton 01",
+    "Kemp": "814",
+    "Abrams": "1907",
+    "Metz": "22"
+  },
+  {
+    "Precinct": "Mableton 02",
+    "Kemp": "427",
+    "Abrams": "1076",
+    "Metz": "11"
+  },
+  {
+    "Precinct": "Mableton 03",
+    "Kemp": "772",
+    "Abrams": "1000",
+    "Metz": "29"
+  },
+  {
+    "Precinct": "Mableton 04",
+    "Kemp": "517",
+    "Abrams": "522",
+    "Metz": "18"
+  },
+  {
+    "Precinct": "Mabry 01",
+    "Kemp": "779",
+    "Abrams": "400",
+    "Metz": "17"
+  },
+  {
+    "Precinct": "Macland 01",
+    "Kemp": "607",
+    "Abrams": "1733",
+    "Metz": "17"
+  },
+  {
+    "Precinct": "Murdock 01",
+    "Kemp": "1471",
+    "Abrams": "1072",
+    "Metz": "39"
+  },
+  {
+    "Precinct": "McEachern 01",
+    "Kemp": "894",
+    "Abrams": "1276",
+    "Metz": "16"
+  },
+  {
+    "Precinct": "McCleskey 01",
+    "Kemp": "719",
+    "Abrams": "471",
+    "Metz": "19"
+  },
+  {
+    "Precinct": "McClure 01",
+    "Kemp": "1370",
+    "Abrams": "701",
+    "Metz": "39"
+  },
+  {
+    "Precinct": "Marietta 1A",
+    "Kemp": "464",
+    "Abrams": "1338",
+    "Metz": "29"
+  },
+  {
+    "Precinct": "Marietta 2A",
+    "Kemp": "911",
+    "Abrams": "562",
+    "Metz": "29"
+  },
+  {
+    "Precinct": "Marietta 2B",
+    "Kemp": "1017",
+    "Abrams": "1528",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Marietta 3A",
+    "Kemp": "1356",
+    "Abrams": "2211",
+    "Metz": "54"
+  },
+  {
+    "Precinct": "Marietta 4A",
+    "Kemp": "1038",
+    "Abrams": "389",
+    "Metz": "22"
+  },
+  {
+    "Precinct": "Marietta 4B",
+    "Kemp": "616",
+    "Abrams": "637",
+    "Metz": "21"
+  },
+  {
+    "Precinct": "Marietta 4C",
+    "Kemp": "1194",
+    "Abrams": "686",
+    "Metz": "35"
+  },
+  {
+    "Precinct": "Marietta 5A",
+    "Kemp": "406",
+    "Abrams": "1126",
+    "Metz": "13"
+  },
+  {
+    "Precinct": "Marietta 5B",
+    "Kemp": "227",
+    "Abrams": "899",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Marietta 6A",
+    "Kemp": "246",
+    "Abrams": "948",
+    "Metz": "13"
+  },
+  {
+    "Precinct": "Marietta 6B",
+    "Kemp": "820",
+    "Abrams": "1032",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Marietta 7A",
+    "Kemp": "234",
+    "Abrams": "1220",
+    "Metz": "18"
+  },
+  {
+    "Precinct": "Mars Hill 01",
+    "Kemp": "1522",
+    "Abrams": "502",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Mars Hill 02",
+    "Kemp": "913",
+    "Abrams": "678",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Mount Bethel 01",
+    "Kemp": "1579",
+    "Abrams": "1129",
+    "Metz": "46"
+  },
+  {
+    "Precinct": "Mount Bethel 03",
+    "Kemp": "1166",
+    "Abrams": "953",
+    "Metz": "38"
+  },
+  {
+    "Precinct": "Mount Bethel 04",
+    "Kemp": "1211",
+    "Abrams": "863",
+    "Metz": "36"
+  },
+  {
+    "Precinct": "North Cobb 01",
+    "Kemp": "685",
+    "Abrams": "646",
+    "Metz": "21"
+  },
+  {
+    "Precinct": "Nickajack 01",
+    "Kemp": "598",
+    "Abrams": "2280",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Norton Park 01",
+    "Kemp": "955",
+    "Abrams": "1529",
+    "Metz": "45"
+  },
+  {
+    "Precinct": "Nicholson 01",
+    "Kemp": "838",
+    "Abrams": "639",
+    "Metz": "30"
+  },
+  {
+    "Precinct": "Oakdale 01",
+    "Kemp": "952",
+    "Abrams": "1441",
+    "Metz": "50"
+  },
+  {
+    "Precinct": "Oregon 01",
+    "Kemp": "706",
+    "Abrams": "438",
+    "Metz": "17"
+  },
+  {
+    "Precinct": "Oregon 02",
+    "Kemp": "768",
+    "Abrams": "2378",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Oregon 03",
+    "Kemp": "622",
+    "Abrams": "1860",
+    "Metz": "24"
+  },
+  {
+    "Precinct": "Oregon 04",
+    "Kemp": "685",
+    "Abrams": "1910",
+    "Metz": "16"
+  },
+  {
+    "Precinct": "Oregon 05",
+    "Kemp": "1022",
+    "Abrams": "1411",
+    "Metz": "22"
+  },
+  {
+    "Precinct": "Pebblebrook 01",
+    "Kemp": "429",
+    "Abrams": "2309",
+    "Metz": "12"
+  },
+  {
+    "Precinct": "Powers Ferry 01",
+    "Kemp": "991",
+    "Abrams": "998",
+    "Metz": "37"
+  },
+  {
+    "Precinct": "Pine Mountain 01",
+    "Kemp": "1522",
+    "Abrams": "731",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Pine Mountain 02",
+    "Kemp": "1557",
+    "Abrams": "587",
+    "Metz": "22"
+  },
+  {
+    "Precinct": "Post Oak 01",
+    "Kemp": "1487",
+    "Abrams": "915",
+    "Metz": "37"
+  },
+  {
+    "Precinct": "Pope 01",
+    "Kemp": "1147",
+    "Abrams": "864",
+    "Metz": "41"
+  },
+  {
+    "Precinct": "Palmer 01",
+    "Kemp": "907",
+    "Abrams": "637",
+    "Metz": "31"
+  },
+  {
+    "Precinct": "Powder Springs 1A",
+    "Kemp": "812",
+    "Abrams": "1910",
+    "Metz": "21"
+  },
+  {
+    "Precinct": "Powder Springs 2A",
+    "Kemp": "345",
+    "Abrams": "1505",
+    "Metz": "7"
+  },
+  {
+    "Precinct": "Powder Springs 3A",
+    "Kemp": "574",
+    "Abrams": "1552",
+    "Metz": "25"
+  },
+  {
+    "Precinct": "Pitner 01",
+    "Kemp": "912",
+    "Abrams": "717",
+    "Metz": "21"
+  },
+  {
+    "Precinct": "Rocky Mount 01",
+    "Kemp": "1223",
+    "Abrams": "916",
+    "Metz": "32"
+  },
+  {
+    "Precinct": "Riverside 01",
+    "Kemp": "65",
+    "Abrams": "915",
+    "Metz": "3"
+  },
+  {
+    "Precinct": "Roswell 01",
+    "Kemp": "2131",
+    "Abrams": "1517",
+    "Metz": "52"
+  },
+  {
+    "Precinct": "Roswell 02",
+    "Kemp": "1385",
+    "Abrams": "1062",
+    "Metz": "43"
+  },
+  {
+    "Precinct": "Sandy Plains 01",
+    "Kemp": "959",
+    "Abrams": "910",
+    "Metz": "30"
+  },
+  {
+    "Precinct": "Shallowford Falls 01",
+    "Kemp": "1325",
+    "Abrams": "959",
+    "Metz": "25"
+  },
+  {
+    "Precinct": "Simpson 01",
+    "Kemp": "703",
+    "Abrams": "542",
+    "Metz": "12"
+  },
+  {
+    "Precinct": "Sewell Mill 01",
+    "Kemp": "1162",
+    "Abrams": "1047",
+    "Metz": "31"
+  },
+  {
+    "Precinct": "Sewell Mill 03",
+    "Kemp": "1070",
+    "Abrams": "1450",
+    "Metz": "54"
+  },
+  {
+    "Precinct": "Smyrna 1A",
+    "Kemp": "411",
+    "Abrams": "1558",
+    "Metz": "26"
+  },
+  {
+    "Precinct": "Smyrna 2A",
+    "Kemp": "633",
+    "Abrams": "2286",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Smyrna 3A",
+    "Kemp": "1269",
+    "Abrams": "2533",
+    "Metz": "62"
+  },
+  {
+    "Precinct": "Smyrna 4A",
+    "Kemp": "1611",
+    "Abrams": "2130",
+    "Metz": "60"
+  },
+  {
+    "Precinct": "Smyrna 5A",
+    "Kemp": "623",
+    "Abrams": "1585",
+    "Metz": "34"
+  },
+  {
+    "Precinct": "Smyrna 6A",
+    "Kemp": "1548",
+    "Abrams": "2246",
+    "Metz": "53"
+  },
+  {
+    "Precinct": "Smyrna 7A",
+    "Kemp": "1265",
+    "Abrams": "2890",
+    "Metz": "53"
+  },
+  {
+    "Precinct": "Sope Creek 01",
+    "Kemp": "924",
+    "Abrams": "631",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Sope Creek 02",
+    "Kemp": "1507",
+    "Abrams": "1390",
+    "Metz": "49"
+  },
+  {
+    "Precinct": "Sope Creek 03",
+    "Kemp": "1089",
+    "Abrams": "722",
+    "Metz": "12"
+  },
+  {
+    "Precinct": "Sweetwater 01",
+    "Kemp": "772",
+    "Abrams": "1157",
+    "Metz": "20"
+  },
+  {
+    "Precinct": "Sweetwater 02",
+    "Kemp": "302",
+    "Abrams": "1165",
+    "Metz": "14"
+  },
+  {
+    "Precinct": "Terrell Mill 01",
+    "Kemp": "818",
+    "Abrams": "2057",
+    "Metz": "38"
+  },
+  {
+    "Precinct": "Timber Ridge 01",
+    "Kemp": "964",
+    "Abrams": "709",
+    "Metz": "38"
+  },
+  {
+    "Precinct": "Vaughan 01",
+    "Kemp": "1420",
+    "Abrams": "633",
+    "Metz": "24"
+  },
+  {
+    "Precinct": "Vinings 01",
+    "Kemp": "562",
+    "Abrams": "1127",
+    "Metz": "18"
+  },
+  {
+    "Precinct": "Vinings 02",
+    "Kemp": "1149",
+    "Abrams": "2296",
+    "Metz": "41"
+  },
+  {
+    "Precinct": "Vinings 03",
+    "Kemp": "867",
+    "Abrams": "1710",
+    "Metz": "25"
+  },
+  {
+    "Precinct": "Vinings 04",
+    "Kemp": "1272",
+    "Abrams": "1029",
+    "Metz": "28"
+  },
+  {
+    "Precinct": "Wade Green 02",
+    "Kemp": "1284",
+    "Abrams": "1469",
+    "Metz": "49"
+  },
+  {
+    "Precinct": "Willeo 01",
+    "Kemp": "1138",
+    "Abrams": "804",
+    "Metz": "27"
+  }
+]
