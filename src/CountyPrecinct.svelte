@@ -4,6 +4,10 @@
 
   let svgMarkup;
   let precinctData;
+  let hoverColor = "blue";
+  let hoverText = "";
+  let fillColor = "white";
+  let map;
 
   onMount(() => {
     fetch("./Cobb-2018.svg")
@@ -18,12 +22,21 @@
         svg.setAttribute("width", "100%");
         svg.setAttribute("font-size", "3em");
         svg.setAttribute("style", "max-height:300px");
-        const array = svg.querySelectorAll("path");
-        for (let i = 0; i < array.length; i++) {
-          array[i].classList.add("tooltip");
-        }
+        // const array = svg.querySelectorAll("path");
+
         svgMarkup = map.innerHTML;
         getResults();
+      })
+      .then(() => {
+        map.querySelectorAll("path").forEach((node) => {
+          node.addEventListener("mouseenter", () => {
+            node.style.fill = "turquoise";
+          });
+
+          node.addEventListener("mouseleave", () => {
+            node.style.fill = "green";
+          });
+        });
       });
   });
 
@@ -55,18 +68,42 @@
     }
   };
 
-  //   var interval = setInterval(getResults, 5000);
+  /*TESTING HOVER EVENT LISTENER */
+
+  function handleClick() {
+    alert("clicked");
+  }
+
+  function handleOnMouse(e) {
+    hoverColor = "red";
+    hoverText = "You hovered!";
+  }
+  function handleMouseOut(e) {
+    hoverColor = "blue";
+    hoverText = "";
+  }
 </script>
 
 <main>
   <div class="map-container">
     {#if svgMarkup}
-      <div class="map">{@html svgMarkup}</div>
+      <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
   </div>
+
+  <button> PLACEHOLDER FOR CRM </button>
 </main>
 
 <style>
+  .tester {
+    background-color: white;
+    min-height: 50px;
+    margin: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+  }
+
   .map {
     fill: white;
     stroke: black;
@@ -84,5 +121,21 @@
     .map {
       padding: 2em;
     }
+  }
+  /* 
+  .tooltip:hover {
+    background-color: green;
+  } */
+  .gop {
+    fill: #ec7c71;
+  }
+  .gop:hover {
+    fill: green;
+  }
+  .dem {
+    fill: #1aa7ec;
+  }
+  .tie {
+    fill: gray;
   }
 </style>
