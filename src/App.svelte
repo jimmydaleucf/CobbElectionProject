@@ -24,7 +24,7 @@
   .container-app {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   h1 {

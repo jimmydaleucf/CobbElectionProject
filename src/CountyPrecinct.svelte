@@ -18,6 +18,10 @@
         svg.setAttribute("width", "100%");
         svg.setAttribute("font-size", "3em");
         svg.setAttribute("style", "max-height:300px");
+        const array = svg.querySelectorAll("path");
+        for (let i = 0; i < array.length; i++) {
+          array[i].classList.add("tooltip");
+        }
         svgMarkup = map.innerHTML;
         getResults();
       });
