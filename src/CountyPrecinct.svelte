@@ -25,23 +25,35 @@
         getResults();
       })
       .then(() => {
+        /*Here we add the event listners for the hover to provide precinct data */
         map.querySelectorAll("path").forEach((node) => {
           node.addEventListener("mouseenter", () => {
-            let id = node.getAttribute("id");
-
+            let id =
+              node.getAttribute(
+                "id"
+              ); /*This grabs the precinct from the id field in the svg path */
             let thing = precinctData.filter((obj) => {
+              /*This filters the results to only the one with the same precicnt name as the path id from the svg. */
               return obj.Precinct === `${id}`;
             });
+            let thingObj =
+              thing[0]; /* Here we pull out the first (and only) object in the results that matched our filter*/
+            let sorted = Object.entries(thingObj).sort(
+              (a, b) => b[1] - a[1]
+            ); /*This sorts the results so that the candidate with the most votes is first and so on. */
+            let precinctName =
+              sorted[0][1]; /*This grabs the value that is the precinct name */
             document.getElementById(
               "crm"
-            ).innerHTML = `<table><h2>${id}</h2><tr><th>Candidate</th><th>Votes</th></tr>
-              <tr><td>Stacey Abrams</td><td>${thing[0].Abrams}</td></tr>
-              <tr><td>Brian Kemp</td><td>${thing[0].Kemp}</td></tr>
-              <tr><td>Ted Metz</td><td>${thing[0].Metz}</td></tr>
+            ).innerHTML = `<table><h3>${precinctName}</h3><tr><th>Candidate</th><th>Votes</th></tr>
+              <tr><td>${sorted[1][0]}</td><td>${sorted[1][1]}</td></tr>
+              <tr><td>${sorted[2][0]}</td><td>${sorted[2][1]}</td></tr>
+              <tr><td>${sorted[3][0]}</td><td>${sorted[3][1]}</td></tr>
               </table>`;
           });
           node.addEventListener("mouseleave", () => {
-            document.getElementById("crm").innerText = "Precinct Name";
+            document.getElementById("crm").innerHTML =
+              "Welcome to my site! Hover over the map to see the results for each precinct.";
           });
         });
       });
@@ -81,28 +93,24 @@
     {#if svgMarkup}
       <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
-    <div id="crm">Precinct Name</div>
+    <div id="crm">
+      Welcome to my site! Hover over the map to see the results for each
+      precinct.
+    </div>
   </div>
 </main>
 
 <style>
-  .tester {
-    background-color: white;
-    min-height: 50px;
-    margin: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-  }
-
   .map {
     fill: white;
     stroke: black;
+    padding: 2em;
   }
   main {
     margin: auto;
   }
   .map-container {
+    display: block;
   }
 
   table {
@@ -113,11 +121,11 @@
   td {
     padding: 5px;
   }
-  svg {
-  }
+
   #crm {
     background-color: white;
-    padding: 10px;
+    padding: 15px;
+    margin: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -166,19 +174,17 @@
   @media (min-width: 640px) {
     .map {
       padding: 2em;
+      height: 400px;
     }
-  }
-
-  .gop {
-    fill: #ec7c71;
-  }
-  .gop:hover {
-    fill: green;
-  }
-  .dem {
-    fill: #1aa7ec;
-  }
-  .tie {
-    fill: gray;
+    .map-container {
+      display: flex;
+      align-items: center;
+    }
+    #crm {
+      width: 300px;
+      min-height: 250px;
+      font-size: 1.25em;
+      flex-wrap: wrap;
+    }
   }
 </style>
