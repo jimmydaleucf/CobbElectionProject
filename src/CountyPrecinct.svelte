@@ -30,11 +30,11 @@
       .then(() => {
         map.querySelectorAll("path").forEach((node) => {
           node.addEventListener("mouseenter", () => {
-            node.style.fill = "turquoise";
+            let id = node.getAttribute("id");
+            document.querySelector("button").innerText = id;
           });
-
           node.addEventListener("mouseleave", () => {
-            node.style.fill = "green";
+            document.querySelector("button").innerText = "PLACEHOLDER FOR CRM";
           });
         });
       });
@@ -67,21 +67,6 @@
       }
     }
   };
-
-  /*TESTING HOVER EVENT LISTENER */
-
-  function handleClick() {
-    alert("clicked");
-  }
-
-  function handleOnMouse(e) {
-    hoverColor = "red";
-    hoverText = "You hovered!";
-  }
-  function handleMouseOut(e) {
-    hoverColor = "blue";
-    hoverText = "";
-  }
 </script>
 
 <main>
