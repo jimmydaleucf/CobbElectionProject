@@ -6,7 +6,7 @@
 
 <main>
   <Navigation />
-  <h1>Georgia Governor 2018</h1>
+  <h1>Cobb County Governor Results 2018</h1>
   <div class="container-app">
     <CountyPrecinct county="Cobb" />
 
