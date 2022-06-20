@@ -4,9 +4,6 @@
 
   let svgMarkup;
   let precinctData;
-  let hoverColor = "blue";
-  let hoverText = "";
-  let fillColor = "white";
   let map;
 
   onMount(() => {
@@ -21,7 +18,7 @@
         svg.setAttribute("height", "100%");
         svg.setAttribute("width", "100%");
         svg.setAttribute("font-size", "3em");
-        svg.setAttribute("style", "max-height:300px");
+        svg.setAttribute("style", "max-height:400px");
         // const array = svg.querySelectorAll("path");
 
         svgMarkup = map.innerHTML;
@@ -31,10 +28,19 @@
         map.querySelectorAll("path").forEach((node) => {
           node.addEventListener("mouseenter", () => {
             let id = node.getAttribute("id");
-            document.getElementById("crm").innerHTML = id;
+
+            let thing = precinctData.filter((obj) => {
+              return obj.Precinct === `${id}`;
+            });
+            document.getElementById(
+              "crm"
+            ).innerHTML = `<table><h2>${id}</h2><tr><th>Candidate</th><th>Votes</th></tr>
+              <tr><td>Stacey Abrams</td><td>${thing[0].Abrams}</td></tr>
+              <tr><td>Brian Kemp</td><td>${thing[0].Kemp}</td></tr>
+              </table>`;
           });
           node.addEventListener("mouseleave", () => {
-            document.getElementById("crm").innerText = "PLACEHOLDER FOR CRM";
+            document.getElementById("crm").innerText = "Precinct Name";
           });
         });
       });
@@ -55,14 +61,14 @@
   const paintMap = () => {
     for (let i = 0; i < precinctData.length; i++) {
       let precinct = precinctData[i].Precinct;
-      let Kemp = Number(precinctData[i].Kemp);
-      let Abrams = Number(precinctData[i].Abrams);
+      let kemp = Number(precinctData[i].Kemp);
+      let abrams = Number(precinctData[i].Abrams);
 
-      if (Kemp > Abrams) {
+      if (kemp > abrams) {
         document.getElementById(`${precinct}`).style.fill = "#ec7c71";
-      } else if (Kemp < Abrams) {
+      } else if (kemp < abrams) {
         document.getElementById(`${precinct}`).style.fill = "#1AA7EC";
-      } else if (Kemp == Abrams) {
+      } else if (kemp == abrams) {
         document.getElementById(`${precinct}`).style.fill = "gray";
       }
     }
@@ -74,7 +80,7 @@
     {#if svgMarkup}
       <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
-    <div id="crm">PLACEHOLDER FOR CRM</div>
+    <div id="crm">Precinct Name</div>
   </div>
 </main>
 
@@ -124,5 +130,44 @@
   }
   .tie {
     fill: gray;
+  }
+  /*TOOL TIP CSS*/
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
   }
 </style>
