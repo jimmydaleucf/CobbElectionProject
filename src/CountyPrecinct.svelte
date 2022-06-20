@@ -7,7 +7,7 @@
   let map;
 
   onMount(() => {
-    fetch("./Cobb-2018.svg")
+    fetch("./assets/Cobb-2018.svg")
       .then((res) => res.text())
       .then((res) => {
         svgMarkup = res;
