@@ -31,10 +31,10 @@
         map.querySelectorAll("path").forEach((node) => {
           node.addEventListener("mouseenter", () => {
             let id = node.getAttribute("id");
-            document.querySelector("button").innerText = id;
+            document.getElementById("crm").innerHTML = id;
           });
           node.addEventListener("mouseleave", () => {
-            document.querySelector("button").innerText = "PLACEHOLDER FOR CRM";
+            document.getElementById("crm").innerText = "PLACEHOLDER FOR CRM";
           });
         });
       });
@@ -74,9 +74,8 @@
     {#if svgMarkup}
       <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
+    <div id="crm">PLACEHOLDER FOR CRM</div>
   </div>
-
-  <button> PLACEHOLDER FOR CRM </button>
 </main>
 
 <style>
@@ -100,6 +99,9 @@
   }
 
   svg {
+  }
+  #crm {
+    background-color: white;
   }
 
   @media (min-width: 640px) {
