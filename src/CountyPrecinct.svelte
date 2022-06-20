@@ -107,6 +107,7 @@
 
   table {
     padding: 5px;
+    background-color: red;
   }
 
   td {
@@ -116,29 +117,12 @@
   }
   #crm {
     background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  @media (min-width: 640px) {
-    .map {
-      padding: 2em;
-    }
-  }
-  /* 
-  .tooltip:hover {
-    background-color: green;
-  } */
-  .gop {
-    fill: #ec7c71;
-  }
-  .gop:hover {
-    fill: green;
-  }
-  .dem {
-    fill: #1aa7ec;
-  }
-  .tie {
-    fill: gray;
-  }
   /*TOOL TIP CSS*/
   .tooltip {
     position: relative;
@@ -177,5 +161,24 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+  }
+
+  @media (min-width: 640px) {
+    .map {
+      padding: 2em;
+    }
+  }
+
+  .gop {
+    fill: #ec7c71;
+  }
+  .gop:hover {
+    fill: green;
+  }
+  .dem {
+    fill: #1aa7ec;
+  }
+  .tie {
+    fill: gray;
   }
 </style>
