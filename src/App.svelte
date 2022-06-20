@@ -9,7 +9,7 @@
   <h1>Georgia Governor 2018</h1>
   <div class="container-app">
     <div>
-      <CountyPrecinct />
+      <CountyPrecinct county="Cobb" />
     </div>
 
     <div />

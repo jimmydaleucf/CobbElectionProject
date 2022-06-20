@@ -7,6 +7,7 @@
   let map;
   let totalVotes;
   let headers = ["Candidate", "Total Votes"];
+  export let county;
 
   onMount(() => {
     fetch("./assets/2018/Cobb.svg")
@@ -97,7 +98,7 @@
       <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
     <div class="crm">
-      <h3>Cobb County Results</h3>
+      <h3>{county} County Results</h3>
       {#if totalVotes}
         <table>
           <thead>
