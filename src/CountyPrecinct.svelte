@@ -37,6 +37,7 @@
             ).innerHTML = `<table><h2>${id}</h2><tr><th>Candidate</th><th>Votes</th></tr>
               <tr><td>Stacey Abrams</td><td>${thing[0].Abrams}</td></tr>
               <tr><td>Brian Kemp</td><td>${thing[0].Kemp}</td></tr>
+              <tr><td>Ted Metz</td><td>${thing[0].Metz}</td></tr>
               </table>`;
           });
           node.addEventListener("mouseleave", () => {
@@ -104,6 +105,13 @@
   .map-container {
   }
 
+  table {
+    padding: 5px;
+  }
+
+  td {
+    padding: 5px;
+  }
   svg {
   }
   #crm {
