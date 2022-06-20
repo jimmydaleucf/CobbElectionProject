@@ -47,14 +47,15 @@
               sorted[0][1]; /*This grabs the value that is the precinct name */
             document.getElementById(
               "precinct-crm"
-            ).innerHTML += `<table><h3>${precinctName} </h3><tr><th>Candidate</th><th>Votes</th></tr>
+            ).innerHTML = `<table><h3>${precinctName} </h3><tr><th>Candidate</th><th>Votes</th></tr>
               <tr><td>${sorted[1][0]}</td><td>${sorted[1][1]}</td></tr>
               <tr><td>${sorted[2][0]}</td><td>${sorted[2][1]}</td></tr>
               <tr><td>${sorted[3][0]}</td><td>${sorted[3][1]}</td></tr>
               </table>`;
           });
           node.addEventListener("mouseleave", () => {
-            document.getElementById("precinct-crm").innerHTML = "";
+            document.getElementById("precinct-crm").innerHTML =
+              "<em><br /><br />Hover over the map to view the precinct level results (tap on mobile)</em>";
           });
         });
       });
@@ -111,7 +112,12 @@
           <tr><td>Metz</td><td>{totalVotes.Metz}</td></tr>
         </table>
       {/if}
-      <div id="precinct-crm" class="" />
+      <div id="precinct-crm" class="">
+        <em
+          ><br /><br />Hover over the map to view the precinct level results
+          (tap on mobile)</em
+        >
+      </div>
     </div>
   </div>
 </main>
@@ -120,17 +126,13 @@
   .map {
     fill: white;
     stroke: black;
-    padding: 2em;
   }
   main {
     margin: auto;
+    width: 100%;
   }
   .map-container {
     display: block;
-  }
-
-  table {
-    padding: 5px;
   }
 
   td {
@@ -138,21 +140,20 @@
   }
 
   #precinct-crm {
-    padding: 15px;
     padding-top: 0px;
-    margin: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
 
   .crm {
     background-color: white;
-    padding: 15px;
     margin: 25px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    max-height: auto;
+    font-size: 1.2em;
   }
 
   /*TOOL TIP CSS*/
@@ -202,13 +203,19 @@
     }
     .map-container {
       display: flex;
-      align-items: center;
+      justify-content: center;
+      /* align-items: center; */
     }
     .crm {
       width: 300px;
       min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;
+    }
+    precinct-crm {
+      justify-content: center;
+      padding: 15px;
+      margin: 25px;
     }
   }
 </style>

@@ -8,9 +8,7 @@
   <Navigation />
   <h1>Georgia Governor 2018</h1>
   <div class="container-app">
-    <div>
-      <CountyPrecinct county="Cobb" />
-    </div>
+    <CountyPrecinct county="Cobb" />
 
     <div />
   </div>
@@ -19,7 +17,6 @@
 <style>
   main {
     text-align: center;
-    /* width: 95%; */
   }
   .container-app {
     display: flex;
