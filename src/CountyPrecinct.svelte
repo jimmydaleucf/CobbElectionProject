@@ -143,6 +143,8 @@
     padding-top: 0px;
     display: flex;
     flex-direction: column;
+    font-size: 0.85em;
+    font-style: italic;
   }
 
   .crm {
