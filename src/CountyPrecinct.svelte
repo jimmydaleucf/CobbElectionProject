@@ -211,6 +211,8 @@
       min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;
+      border-radius: 10%;
+      box-shadow: 5px 5px 5px #555;
     }
     precinct-crm {
       justify-content: center;
