@@ -30,6 +30,7 @@
     font-size: 4em;
     font-weight: 150;
     margin: 20px;
+    padding-top: 40px;
   }
   @media (min-width: 640px) {
     h1 {

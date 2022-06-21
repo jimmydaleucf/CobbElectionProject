@@ -154,6 +154,8 @@
     /* justify-content: center; */
     max-height: auto;
     font-size: 1.2em;
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px #555;
   }
 
   /*TOOL TIP CSS*/
@@ -211,10 +213,8 @@
       min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;
-      border-radius: 10%;
-      box-shadow: 5px 5px 5px #555;
     }
-    precinct-crm {
+    .precinct-crm {
       justify-content: center;
       padding: 15px;
       margin: 25px;
