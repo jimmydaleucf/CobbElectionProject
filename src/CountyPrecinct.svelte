@@ -5,9 +5,12 @@
   let svgMarkup;
   let precinctData;
   let map;
+  let totalVotes;
+  let headers = ["Candidate", "Total Votes"];
+  export let county;
 
   onMount(() => {
-    fetch("./Cobb-2018.svg")
+    fetch("./assets/2018/Cobb.svg")
       .then((res) => res.text())
       .then((res) => {
         svgMarkup = res;
@@ -20,7 +23,6 @@
         svg.setAttribute("font-size", "3em");
         svg.setAttribute("style", "max-height:400px");
         // const array = svg.querySelectorAll("path");
-
         svgMarkup = map.innerHTML;
         getResults();
       })
@@ -44,27 +46,30 @@
             let precinctName =
               sorted[0][1]; /*This grabs the value that is the precinct name */
             document.getElementById(
-              "crm"
-            ).innerHTML = `<table><h3>${precinctName}</h3><tr><th>Candidate</th><th>Votes</th></tr>
+              "precinct-crm"
+            ).innerHTML = `<table><h3>${precinctName} </h3><tr><th>Candidate</th><th>Votes</th></tr>
               <tr><td>${sorted[1][0]}</td><td>${sorted[1][1]}</td></tr>
               <tr><td>${sorted[2][0]}</td><td>${sorted[2][1]}</td></tr>
               <tr><td>${sorted[3][0]}</td><td>${sorted[3][1]}</td></tr>
               </table>`;
           });
           node.addEventListener("mouseleave", () => {
-            document.getElementById("crm").innerHTML =
-              "Welcome to my site! Hover over the map to see the results for each precinct.";
+            document.getElementById("precinct-crm").innerHTML =
+              "<em><br /><br />Hover over the map to view the precinct level results (tap on mobile)</em>";
           });
         });
       });
   });
 
   async function getResults() {
-    const res = await fetch(`./cobb_results_gov_2018.json`);
+    const res = await fetch(`./electionResults/cobb_results_gov_2018.json`);
     const results = await res.json();
     if (res.ok) {
       //   debugger;
       precinctData = results;
+      totalVotes = precinctData.slice(-1)[0];
+      console.log(totalVotes);
+      // totalVotes = totalVotes;
       paintMap(precinctData);
     } else {
       throw new Error(text);
@@ -72,7 +77,7 @@
   }
 
   const paintMap = () => {
-    for (let i = 0; i < precinctData.length; i++) {
+    for (let i = 0; i < precinctData.length - 1; i++) {
       let precinct = precinctData[i].Precinct;
       let kemp = Number(precinctData[i].Kemp);
       let abrams = Number(precinctData[i].Abrams);
@@ -93,9 +98,26 @@
     {#if svgMarkup}
       <div class="map" bind:this={map}>{@html svgMarkup}</div>
     {/if}
-    <div id="crm">
-      Welcome to my site! Hover over the map to see the results for each
-      precinct.
+    <div class="crm">
+      <h3>{county} County Results</h3>
+      {#if totalVotes}
+        <table>
+          <thead>
+            {#each headers as header}
+              <th class={header}>{header}</th>
+            {/each}
+          </thead>
+          <tr><td>Abrams</td><td>{totalVotes.Abrams}</td></tr>
+          <tr><td>Kemp</td><td>{totalVotes.Kemp}</td></tr>
+          <tr><td>Metz</td><td>{totalVotes.Metz}</td></tr>
+        </table>
+      {/if}
+      <div id="precinct-crm" class="">
+        <em
+          ><br /><br />Hover over the map to view the precinct level results
+          (tap on mobile)</em
+        >
+      </div>
     </div>
   </div>
 </main>
@@ -104,31 +126,34 @@
   .map {
     fill: white;
     stroke: black;
-    padding: 2em;
   }
   main {
     margin: auto;
+    width: 100%;
   }
   .map-container {
     display: block;
-  }
-
-  table {
-    padding: 5px;
-    background-color: red;
   }
 
   td {
     padding: 5px;
   }
 
-  #crm {
-    background-color: white;
-    padding: 15px;
-    margin: 25px;
+  #precinct-crm {
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+  }
+
+  .crm {
+    background-color: white;
+    margin: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    max-height: auto;
+    font-size: 1.2em;
   }
 
   /*TOOL TIP CSS*/
@@ -178,13 +203,19 @@
     }
     .map-container {
       display: flex;
-      align-items: center;
+      justify-content: center;
+      /* align-items: center; */
     }
-    #crm {
+    .crm {
       width: 300px;
       min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;
+    }
+    precinct-crm {
+      justify-content: center;
+      padding: 15px;
+      margin: 25px;
     }
   }
 </style>
