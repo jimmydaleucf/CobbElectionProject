@@ -6,7 +6,8 @@ body {
 }
 
 body {
-  color: #333;
+  /* color: #333; */
+  color: darkslategray;
   background-color: skyblue;
   margin: 0;
   /* padding: 8px; */

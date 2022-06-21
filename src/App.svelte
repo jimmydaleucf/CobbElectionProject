@@ -28,7 +28,7 @@
     color: darkslategray;
     text-transform: uppercase;
     font-size: 4em;
-    font-weight: 100;
+    font-weight: 150;
     margin: 20px;
   }
   @media (min-width: 640px) {
