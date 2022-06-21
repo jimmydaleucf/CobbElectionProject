@@ -29,5 +29,11 @@
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
+    margin: 20px;
+  }
+  @media (min-width: 640px) {
+    h1 {
+      margin-top: 40px;
+    }
   }
 </style>
