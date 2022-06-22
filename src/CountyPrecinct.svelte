@@ -4,10 +4,14 @@
 
   let svgMarkup;
   let precinctData;
+  let countySummary;
+  let contestResults;
+  let candidatesObj = {};
   let map;
   let totalVotes;
   let headers = ["Candidate", "Total Votes"];
   export let county;
+  let raceKey = "10";
 
   onMount(() => {
     fetch("./assets/2018/Cobb.svg")
@@ -24,7 +28,7 @@
         svg.setAttribute("style", "max-height:400px");
         // const array = svg.querySelectorAll("path");
         svgMarkup = map.innerHTML;
-        getResults();
+        getOverview().then(getResults());
       })
       .then(() => {
         /*Here we add the event listners for the hover to provide precinct data */
@@ -61,38 +65,64 @@
       });
   });
 
-  /**Comment*/
+  /*Function to grab overview feed and pull out candidate lists */
+  async function getOverview() {
+    const response = await fetch(
+      "https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/sum.json?1655850344398"
+    );
+    const overview = await response.json();
+    if (response.ok) {
+      countySummary = overview;
+      let contestOverview = countySummary.Contests.find(
+        (element) => element.K === `${raceKey}`
+      );
+      candidatesObj = contestOverview.CH;
+      console.log(candidatesObj);
+    } else {
+      throw new Error(text);
+    }
+  }
+
+  /****************/
 
   async function getResults() {
-    const res = await fetch(`./electionResults/cobb_results_gov_2018.json`);
+    const res = await fetch(
+      `https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/details.json?1655858295886`
+    );
     const results = await res.json();
     if (res.ok) {
       //   debugger;
       precinctData = results;
-      totalVotes = precinctData.slice(-1)[0];
-      console.log(totalVotes);
+      let precinctArray = precinctData.Contests;
+      // console.log(precinctArray);
+      let contestResults = precinctArray.find(
+        (element) => element.K === `${raceKey}`
+      );
+      console.log(contestResults);
       // totalVotes = totalVotes;
-      paintMap(precinctData);
+      paintMap(contestResults);
     } else {
       throw new Error(text);
     }
   }
 
   const paintMap = () => {
-    for (let i = 0; i < precinctData.length - 1; i++) {
-      let precinct = precinctData[i].Precinct;
-      let kemp = Number(precinctData[i].Kemp);
-      let abrams = Number(precinctData[i].Abrams);
-
-      if (kemp > abrams) {
-        document.getElementById(`${precinct}`).style.fill = "#ec7c71";
-      } else if (kemp < abrams) {
-        document.getElementById(`${precinct}`).style.fill = "#1AA7EC";
-      } else if (kemp == abrams) {
-        document.getElementById(`${precinct}`).style.fill = "gray";
-      }
+    for (let i = 0; i < contestResults.length; i++) {
+      //   let precinct = precinctData[i].Precinct;
+      //   let kemp = Number(precinctData[i].Kemp);
+      //   let abrams = Number(precinctData[i].Abrams);
+      console.log("test");
     }
+
+    // if (kemp > abrams) {
+    //   document.getElementById(`${precinct}`).style.fill = "#ec7c71";
+    // } else if (kemp < abrams) {
+    //   document.getElementById(`${precinct}`).style.fill = "#1AA7EC";
+    // } else if (kemp == abrams) {
+    //   document.getElementById(`${precinct}`).style.fill = "gray";
+    // }
   };
+  // };
 </script>
 
 <main>
