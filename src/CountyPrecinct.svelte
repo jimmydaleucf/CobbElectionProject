@@ -5,8 +5,7 @@
   let svgMarkup;
   let precinctData;
   let countySummary;
-  let contestResults;
-  let candidatesObj = {};
+  let candidateList = {};
   let map;
   let totalVotes;
   let headers = ["Candidate", "Total Votes"];
@@ -28,7 +27,8 @@
         svg.setAttribute("style", "max-height:400px");
         // const array = svg.querySelectorAll("path");
         svgMarkup = map.innerHTML;
-        getOverview().then(getResults());
+        getOverview();
+        getResults();
       })
       .then(() => {
         /*Here we add the event listners for the hover to provide precinct data */
@@ -76,8 +76,8 @@
       let contestOverview = countySummary.Contests.find(
         (element) => element.K === `${raceKey}`
       );
-      candidatesObj = contestOverview.CH;
-      console.log(candidatesObj);
+      candidateList = contestOverview.CH;
+      // console.log(candidateList);
     } else {
       throw new Error(text);
     }
@@ -93,9 +93,9 @@
     if (res.ok) {
       //   debugger;
       precinctData = results;
-      let precinctArray = precinctData.Contests;
-      // console.log(precinctArray);
-      let contestResults = precinctArray.find(
+      let allContestArray = precinctData.Contests;
+      // console.log(allContestArray);
+      let contestResults = allContestArray.find(
         (element) => element.K === `${raceKey}`
       );
       console.log(contestResults);
@@ -106,12 +106,30 @@
     }
   }
 
-  const paintMap = () => {
-    for (let i = 0; i < contestResults.length; i++) {
-      //   let precinct = precinctData[i].Precinct;
-      //   let kemp = Number(precinctData[i].Kemp);
-      //   let abrams = Number(precinctData[i].Abrams);
-      console.log("test");
+  const paintMap = (contestResults) => {
+    getOverview();
+    // console.log(candidateList);
+    let precinctsArray = contestResults.P;
+    // console.log(precinctsArray);
+    let votes = contestResults.V;
+    // console.log(votes);
+    for (let i = 0; i < precinctsArray.length; i++) {
+      let precinct = precinctsArray[i];
+      let votesArray = [votes[i]];
+      // console.log("votes array");
+      // console.log(votesArray.length);
+      for (let i = 0; i < votesArray[0].length; i++) {
+        let name = candidateList[i];
+        let total = votesArray[0][i];
+        let foo = name.slice(-5);
+        let party = foo.slice(1, 4);
+        console.log(precinct);
+        const candidateObj = new Object();
+        candidateObj.name = name;
+        candidateObj.votes = total;
+        candidateObj.party = party;
+        console.log(candidateObj);
+      }
     }
 
     // if (kemp > abrams) {
