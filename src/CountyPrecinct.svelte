@@ -112,25 +112,37 @@
     let precinctsArray = contestResults.P;
     // console.log(precinctsArray);
     let votes = contestResults.V;
+    let raceResults = [];
     // console.log(votes);
     for (let i = 0; i < precinctsArray.length; i++) {
       let precinct = precinctsArray[i];
       let votesArray = [votes[i]];
+      let resultsArray = [];
+      // console.log(precinct);
       // console.log("votes array");
       // console.log(votesArray.length);
       for (let i = 0; i < votesArray[0].length; i++) {
-        let name = candidateList[i];
+        let name = candidateList[i].slice(0, -6);
         let total = votesArray[0][i];
-        let foo = name.slice(-5);
+        let foo = candidateList[i].slice(-5);
         let party = foo.slice(1, 4);
-        console.log(precinct);
+        // console.log(precinct);
         const candidateObj = new Object();
         candidateObj.name = name;
         candidateObj.votes = total;
         candidateObj.party = party;
-        console.log(candidateObj);
+        // console.log(candidateObj);
+        resultsArray.push(candidateObj);
       }
+      // console.log(resultsArray);
+      let precinctObj = new Object();
+      precinctObj.precinct = precinct;
+      precinctObj.candidates = resultsArray;
+      // console.log(precinctObj);
+
+      raceResults.push(precinctObj);
     }
+    console.log(raceResults);
 
     // if (kemp > abrams) {
     //   document.getElementById(`${precinct}`).style.fill = "#ec7c71";
