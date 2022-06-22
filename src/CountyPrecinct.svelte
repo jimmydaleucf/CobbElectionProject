@@ -61,6 +61,8 @@
       });
   });
 
+  /**Comment*/
+
   async function getResults() {
     const res = await fetch(`./electionResults/cobb_results_gov_2018.json`);
     const results = await res.json();
