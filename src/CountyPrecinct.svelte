@@ -47,9 +47,8 @@
             /*This filters the results to only the one with the same precinct name as the path id from the svg. */
             console.log(targetPrecinct);
 
-            document.getElementById(
-              "precinct-crm"
-            ).innerHTML = '<h3>${id} </h3>'';
+            document.getElementById("precinct-crm").innerHTML =
+              "<h3>${id} </h3>";
           });
           node.addEventListener("mouseleave", () => {
             document.getElementById("precinct-crm").innerHTML =
