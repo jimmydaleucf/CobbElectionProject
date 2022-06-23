@@ -41,19 +41,16 @@
               /*This grabs the precinct from the id field in the svg path */
               "id"
             );
-            console.log(id);
             let targetPrecinct = raceResults.find(
               (element) => element.precinct === `${id}`
             );
             /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-            console.log(targetPrecinct);
-            console.log;
+
             const newTable = document.createElement("table");
             const thead = document.createElement("thead");
             const tbody = document.createElement("tbody");
             newTable.appendChild(thead);
             newTable.appendChild(tbody);
-            console.log(targetPrecinct.candidates.length);
             for (let i = 0; i < targetPrecinct.candidates.length; i++) {
               const newRow = document.createElement("tr");
               tbody.appendChild(newRow);
@@ -157,8 +154,6 @@
     let newObj = new Object();
     newObj.candidates = candidateList;
     newObj.precincts = raceResults;
-    console.log(overviewArray);
-
     paintMap(raceResults);
   };
 
