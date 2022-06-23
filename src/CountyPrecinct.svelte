@@ -115,7 +115,7 @@
         let name = candidateList[i].slice(0, -6);
         let total = votesArray[0][i];
         let foo = candidateList[i].slice(-5);
-        let party = foo.slice(1, 4);
+        let party = foo.slice(1, 4).toUpperCase();
         const candidateObj = new Object();
         candidateObj.name = name;
         candidateObj.votes = total;
