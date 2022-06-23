@@ -8,7 +8,6 @@
   let candidateList = {};
   let map;
   let overviewArray = [];
-
   let overviewVotes;
   let raceResults = [];
   let headers = ["Candidate", "Total Votes"];
@@ -83,6 +82,7 @@
         jimmy.voteTotal = overviewVotes[i];
         jimmy.party = party;
         overviewArray.push(jimmy);
+        overviewArray = overviewArray;
       }
     } else {
       throw new Error(text);
@@ -175,8 +175,10 @@
               <th class={header}>{header}</th>
             {/each}
           </thead>
-          {#each overviewArray as { candidate, votes }}
-            <tr><td>{candidate}</td></tr>{/each}
+          <tbody>
+            {#each overviewArray as { candidate, voteTotal }}
+              <tr><td>{candidate}</td><td>{voteTotal}</td></tr>{/each}
+          </tbody>
         </table>
       {/if}
       <div id="precinct-crm" class="">
@@ -204,6 +206,8 @@
 
   td {
     padding: 5px;
+    font-size: 0.85em;
+    text-align: center;
   }
 
   #precinct-crm {
