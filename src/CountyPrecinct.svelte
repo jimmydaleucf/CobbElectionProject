@@ -85,8 +85,6 @@
     }
   }
 
-  /****************/
-
   /** This function fetches the precinct results feed for all the contests */
   async function getResults() {
     const res = await fetch(
@@ -94,7 +92,6 @@
     );
     const results = await res.json();
     if (res.ok) {
-      //   debugger;
       precinctData = results;
       let allContestArray = precinctData.Contests;
       let contestResults = allContestArray.find(
@@ -136,19 +133,16 @@
     paintMap(raceResults);
   };
 
+  /*This function paints the map using the unified raceResults JSON that was created in the transform function*/
   const paintMap = (raceResults) => {
     for (let i = 0; i < raceResults.length; i++) {
       const location = raceResults[i];
       const id = raceResults[i].precinct;
       const winner = raceResults[i].candidates[0]; //add that vote count is greater than zero.
-      console.log(winner.party);
       if (winner.votes > 0) {
         const mapInstance = document.querySelector("svg");
         const mapPrecinct = mapInstance.getElementById(id);
         let winnerColor = palette[winner.party];
-        console.log(winnerColor);
-
-        // const winnerColor = palette[winner.candidateId];
         mapPrecinct.style.fill = winnerColor;
       } else {
       }
@@ -216,51 +210,10 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     max-height: auto;
     font-size: 1.2em;
     border-radius: 10%;
     box-shadow: 5px 5px 5px #555;
-  }
-
-  /*TOOL TIP CSS*/
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
   }
 
   @media (min-width: 640px) {
