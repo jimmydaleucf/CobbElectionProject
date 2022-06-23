@@ -208,6 +208,7 @@
   .map {
     fill: white;
     stroke: black;
+    margin: 8px;
   }
   main {
     margin: auto;
@@ -245,7 +246,6 @@
 
   @media (min-width: 640px) {
     .map {
-      padding: 2em;
       height: 400px;
     }
     .map-container {
