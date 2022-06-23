@@ -8,9 +8,12 @@
   let candidateList = {};
   let map;
   let totalVotes;
+  let raceResults = [];
   let headers = ["Candidate", "Total Votes"];
   export let county;
-  let raceKey = "10";
+  export let raceKey;
+
+  let palette = { REP: "#DE8275", DEM: "#6495ED", OTHER: "#FDDA0D" };
 
   onMount(() => {
     fetch("./assets/2018/Cobb.svg")
@@ -25,7 +28,6 @@
         svg.setAttribute("width", "100%");
         svg.setAttribute("font-size", "3em");
         svg.setAttribute("style", "max-height:400px");
-        // const array = svg.querySelectorAll("path");
         svgMarkup = map.innerHTML;
         getOverview();
         getResults();
@@ -34,12 +36,13 @@
         /*Here we add the event listners for the hover to provide precinct data */
         map.querySelectorAll("path").forEach((node) => {
           node.addEventListener("mouseenter", () => {
-            let id =
-              node.getAttribute(
-                "id"
-              ); /*This grabs the precinct from the id field in the svg path */
+            let id = node.getAttribute(
+              /*This grabs the precinct from the id field in the svg path */
+              "id"
+            );
             let thing = precinctData.filter((obj) => {
-              /*This filters the results to only the one with the same precicnt name as the path id from the svg. */
+              /*This filters the results to only the one with the same precinct name as the path id from the svg. */
+
               return obj.Precinct === `${id}`;
             });
             let thingObj =
@@ -85,6 +88,7 @@
 
   /****************/
 
+  /** This function fetches the precinct results feed for all the contests */
   async function getResults() {
     const res = await fetch(
       `https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/details.json?1655858295886`
@@ -94,71 +98,69 @@
       //   debugger;
       precinctData = results;
       let allContestArray = precinctData.Contests;
-      // console.log(allContestArray);
       let contestResults = allContestArray.find(
         (element) => element.K === `${raceKey}`
       );
-      console.log(contestResults);
-      // totalVotes = totalVotes;
-      paintMap(contestResults);
+      transformData(contestResults);
     } else {
       throw new Error(text);
     }
   }
 
-  const paintMap = (contestResults) => {
-    getOverview();
-    // console.log(candidateList);
+  /*This function takes the two feeds and transforms them into an array of objects (each precinct results set)*/
+  const transformData = (contestResults) => {
     let precinctsArray = contestResults.P;
-    // console.log(precinctsArray);
     let votes = contestResults.V;
-    let raceResults = [];
-    // console.log(votes);
     for (let i = 0; i < precinctsArray.length; i++) {
       let precinct = precinctsArray[i];
       let votesArray = [votes[i]];
       let resultsArray = [];
-      // console.log(precinct);
-      // console.log("votes array");
-      // console.log(votesArray.length);
       for (let i = 0; i < votesArray[0].length; i++) {
         let name = candidateList[i].slice(0, -6);
         let total = votesArray[0][i];
         let foo = candidateList[i].slice(-5);
         let party = foo.slice(1, 4);
-        // console.log(precinct);
         const candidateObj = new Object();
         candidateObj.name = name;
         candidateObj.votes = total;
         candidateObj.party = party;
-        // console.log(candidateObj);
         resultsArray.push(candidateObj);
       }
-      // console.log(resultsArray);
       let precinctObj = new Object();
       precinctObj.precinct = precinct;
       precinctObj.candidates = resultsArray;
-      // console.log(precinctObj);
-
+      resultsArray.sort(function (a, b) {
+        return b.votes - a.votes;
+      });
       raceResults.push(precinctObj);
     }
-    console.log(raceResults);
-
-    // if (kemp > abrams) {
-    //   document.getElementById(`${precinct}`).style.fill = "#ec7c71";
-    // } else if (kemp < abrams) {
-    //   document.getElementById(`${precinct}`).style.fill = "#1AA7EC";
-    // } else if (kemp == abrams) {
-    //   document.getElementById(`${precinct}`).style.fill = "gray";
-    // }
+    paintMap(raceResults);
   };
-  // };
+
+  const paintMap = (raceResults) => {
+    for (let i = 0; i < raceResults.length; i++) {
+      const location = raceResults[i];
+      const id = raceResults[i].precinct;
+      const winner = raceResults[i].candidates[0]; //add that vote count is greater than zero.
+      console.log(winner.party);
+      if (winner.votes > 0) {
+        const mapInstance = document.querySelector("svg");
+        const mapPrecinct = mapInstance.getElementById(id);
+        let winnerColor = palette[winner.party];
+        console.log(winnerColor);
+
+        // const winnerColor = palette[winner.candidateId];
+        mapPrecinct.style.fill = winnerColor;
+      } else {
+      }
+    }
+  };
 </script>
 
 <main>
   <div class="map-container">
     {#if svgMarkup}
-      <div class="map" bind:this={map}>{@html svgMarkup}</div>
+      <div class="map" id={raceKey} bind:this={map}>{@html svgMarkup}</div>
     {/if}
     <div class="crm">
       <h3>{county} County Results</h3>
