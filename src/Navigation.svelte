@@ -7,7 +7,7 @@
 </script>
 
 <main>
-  <div class="navbar">
+  <nav class="navbar">
     <ul>
       {#each navItems as item}
         <li>
@@ -15,7 +15,7 @@
         </li>
       {/each}
     </ul>
-  </div>
+  </nav>
 </main>
 
 <style>
@@ -49,6 +49,12 @@
     overflow: hidden;
   }
   main {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 30px;
+    overflow: hidden;
     width: 100%;
   }
   @media (max-width: 420px) {
