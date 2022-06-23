@@ -7,7 +7,9 @@
   let countySummary;
   let candidateList = {};
   let map;
-  let totalVotes;
+  let overviewArray = [];
+
+  let overviewVotes;
   let raceResults = [];
   let headers = ["Candidate", "Total Votes"];
   export let county;
@@ -47,8 +49,9 @@
             /*This filters the results to only the one with the same precinct name as the path id from the svg. */
             console.log(targetPrecinct);
 
-            document.getElementById("precinct-crm").innerHTML =
-              "<h3>${id} </h3>";
+            document.getElementById(
+              "precinct-crm"
+            ).innerHTML = `<h3>${id} </h3>`;
           });
           node.addEventListener("mouseleave", () => {
             document.getElementById("precinct-crm").innerHTML =
@@ -70,7 +73,17 @@
         (element) => element.K === `${raceKey}`
       );
       candidateList = contestOverview.CH;
-      // console.log(candidateList);
+      overviewVotes = contestOverview.V;
+      for (let i = 0; i < candidateList.length; i++) {
+        let name = candidateList[i].slice(0, -6);
+        let foo = candidateList[i].slice(-5);
+        let party = foo.slice(1, 4).toUpperCase();
+        const jimmy = new Object();
+        jimmy.candidate = name;
+        jimmy.voteTotal = overviewVotes[i];
+        jimmy.party = party;
+        overviewArray.push(jimmy);
+      }
     } else {
       throw new Error(text);
     }
@@ -88,6 +101,7 @@
       let contestResults = allContestArray.find(
         (element) => element.K === `${raceKey}`
       );
+      // console.log(contestResults);
       transformData(contestResults);
     } else {
       throw new Error(text);
@@ -98,6 +112,7 @@
   const transformData = (contestResults) => {
     let precinctsArray = contestResults.P;
     let votes = contestResults.V;
+    // console.log(contestResults);
     for (let i = 0; i < precinctsArray.length; i++) {
       let precinct = precinctsArray[i];
       let votesArray = [votes[i]];
@@ -121,7 +136,11 @@
       });
       raceResults.push(precinctObj);
     }
-    console.log(raceResults);
+    let newObj = new Object();
+    newObj.candidates = candidateList;
+    newObj.precincts = raceResults;
+    console.log(overviewArray);
+
     paintMap(raceResults);
   };
 
@@ -149,16 +168,15 @@
     {/if}
     <div class="crm">
       <h3>{county} County Results</h3>
-      {#if totalVotes}
+      {#if overviewArray}
         <table>
           <thead>
             {#each headers as header}
               <th class={header}>{header}</th>
             {/each}
           </thead>
-          <tr><td>Abrams</td><td>{totalVotes.Abrams}</td></tr>
-          <tr><td>Kemp</td><td>{totalVotes.Kemp}</td></tr>
-          <tr><td>Metz</td><td>{totalVotes.Metz}</td></tr>
+          {#each overviewArray as { candidate, votes }}
+            <tr><td>{candidate}</td></tr>{/each}
         </table>
       {/if}
       <div id="precinct-crm" class="">
