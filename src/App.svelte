@@ -8,7 +8,7 @@
   <Navigation />
   <h1>Cobb County Governor Results 2018</h1>
   <div class="container-app">
-    <CountyPrecinct county="Cobb" raceKey="10" />
+    <CountyPrecinct county="Cobb" raceKey="50" />
 
     <div />
   </div>

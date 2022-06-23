@@ -40,24 +40,16 @@
               /*This grabs the precinct from the id field in the svg path */
               "id"
             );
-            let thing = precinctData.filter((obj) => {
-              /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-              return obj.Precinct === `${id}`;
-            });
-            let thingObj =
-              thing[0]; /* Here we pull out the first (and only) object in the results that matched our filter*/
-            let sorted = Object.entries(thingObj).sort(
-              (a, b) => b[1] - a[1]
-            ); /*This sorts the results so that the candidate with the most votes is first and so on. */
-            let precinctName =
-              sorted[0][1]; /*This grabs the value that is the precinct name */
+            console.log(id);
+            let targetPrecinct = raceResults.find(
+              (element) => element.precinct === `${id}`
+            );
+            /*This filters the results to only the one with the same precinct name as the path id from the svg. */
+            console.log(targetPrecinct);
+
             document.getElementById(
               "precinct-crm"
-            ).innerHTML = `<table><h3>${precinctName} </h3><tr><th>Candidate</th><th>Votes</th></tr>
-              <tr><td>${sorted[1][0]}</td><td>${sorted[1][1]}</td></tr>
-              <tr><td>${sorted[2][0]}</td><td>${sorted[2][1]}</td></tr>
-              <tr><td>${sorted[3][0]}</td><td>${sorted[3][1]}</td></tr>
-              </table>`;
+            ).innerHTML = '<h3>${id} </h3>'';
           });
           node.addEventListener("mouseleave", () => {
             document.getElementById("precinct-crm").innerHTML =
@@ -130,6 +122,7 @@
       });
       raceResults.push(precinctObj);
     }
+    console.log(raceResults);
     paintMap(raceResults);
   };
 
