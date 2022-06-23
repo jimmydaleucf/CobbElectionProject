@@ -47,10 +47,28 @@
             );
             /*This filters the results to only the one with the same precinct name as the path id from the svg. */
             console.log(targetPrecinct);
-
-            document.getElementById(
-              "precinct-crm"
-            ).innerHTML = `<h3>${id} </h3>`;
+            console.log;
+            const newTable = document.createElement("table");
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+            newTable.appendChild(thead);
+            newTable.appendChild(tbody);
+            console.log(targetPrecinct.candidates.length);
+            for (let i = 0; i < targetPrecinct.candidates.length; i++) {
+              const newRow = document.createElement("tr");
+              tbody.appendChild(newRow);
+              const newCell = document.createElement("td");
+              let name = targetPrecinct.candidates[i].name;
+              newCell.innerHTML = `${name}`;
+              let voteCell = document.createElement("td");
+              let numberOfVotes = targetPrecinct.candidates[i].votes;
+              voteCell.innerHTML = `${numberOfVotes}`;
+              newRow.appendChild(newCell);
+              newRow.appendChild(voteCell);
+            }
+            let precinctInfo = document.getElementById("precinct-crm");
+            precinctInfo.innerHTML = `<h3>${id} </h3>`;
+            precinctInfo.appendChild(newTable);
           });
           node.addEventListener("mouseleave", () => {
             document.getElementById("precinct-crm").innerHTML =
