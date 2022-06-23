@@ -42,7 +42,6 @@
             );
             let thing = precinctData.filter((obj) => {
               /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-
               return obj.Precinct === `${id}`;
             });
             let thingObj =
