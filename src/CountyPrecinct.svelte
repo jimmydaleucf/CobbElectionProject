@@ -175,9 +175,11 @@
 </script>
 
 <main>
-  <div class="map-container">
+  <div class="map-container" id="{raceKey}-{county}-container">
     {#if svgMarkup}
-      <div class="map" id={raceKey} bind:this={map}>{@html svgMarkup}</div>
+      <div class="map" id="{raceKey}-{county}-map" bind:this={map}>
+        {@html svgMarkup}
+      </div>
     {/if}
     <div class="crm">
       <h3>{county} County Results</h3>
