@@ -75,7 +75,7 @@
             document.getElementById(
               `${raceKey}-${county}-precinct-crm`
             ).innerHTML =
-              "<em><br /><br />Hover over the map to view the precinct level results (tap on mobile)</em>";
+              "<br /><br />Hover over the map to view the precinct level results (tap on mobile)";
           });
         });
       });
@@ -205,11 +205,9 @@
           </tbody>
         </table>
       {/if}
-      <div id="{raceKey}-{county}-precinct-crm" class="">
-        <em
-          ><br /><br />Hover over the map to view the precinct level results
-          (tap on mobile)</em
-        >
+      <div id="{raceKey}-{county}-precinct-crm" class="precinct-crm">
+        <br /><br /> Hover over the map to view the precinct level results (tap on
+        mobile)
       </div>
     </div>
   </div>
@@ -235,7 +233,7 @@
     text-align: center;
   }
 
-  #precinct-crm {
+  .precinct-crm {
     padding-top: 0px;
     display: flex;
     flex-direction: column;
@@ -272,8 +270,8 @@
     }
     .precinct-crm {
       justify-content: center;
-      padding: 15px;
-      margin: 25px;
+      /* padding: 15px; */
+      /* margin: 25px; */
     }
   }
 </style>
