@@ -2,16 +2,33 @@
   import Navigation from "./Navigation.svelte";
   import CountyPrecinct from "./CountyPrecinct.svelte";
   export let name;
+  let place = "Cobb";
+  let keys = [
+    { key: "10", label: "Governor" },
+    { key: "30", label: "Lt. Governor" },
+    { key: "50", label: "Sec. of State" },
+    { key: "70", label: "Attorney General" },
+  ];
 </script>
 
 <main>
-  <Navigation />
+  <nav class="navbar">
+    <ul>
+      {#if keys}
+        {#each keys as { key, label }}
+          <li>
+            <a href="#{key}-{place}-map">{label} </a>
+          </li>
+        {/each}
+      {/if}
+    </ul>
+  </nav>
+  <!-- <Navigation /> -->
   <h1>Cobb County Election Results 2018</h1>
   <div class="container-app">
-    <CountyPrecinct county="Cobb" raceKey="10" />
-    <CountyPrecinct county="Cobb" raceKey="30" />
-    <CountyPrecinct county="Cobb" raceKey="50" />
-    <CountyPrecinct county="Cobb" raceKey="70" />
+    {#each keys as { key, label }}
+      <CountyPrecinct county={place} raceKey={key} />
+    {/each}
 
     <div />
   </div>
@@ -35,7 +52,53 @@
     margin: 20px;
     padding-top: 40px;
   }
-  @media (min-width: 640px) {
+  a {
+    color: white;
+    font-size: 1.5em;
+  }
+  li a:hover {
+    color: lightgray;
+  }
+  ul {
+    display: flex;
+    justify-content: right;
+  }
+
+  li {
+    list-style-type: none;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  ul {
+    margin: 0;
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #0988d7;
+    height: 30px;
+    overflow: hidden;
+  }
+  /* .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 30px;
+    overflow: hidden;
+    width: 100%;
+  } */
+  @media (max-width: 420px) {
+    a {
+      font-size: 0.85em;
+    }
+
+    li {
+      padding: 8px;
+    }
+
     h1 {
       margin-top: 40px;
     }

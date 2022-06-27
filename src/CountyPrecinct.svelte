@@ -99,11 +99,11 @@
         let name = candidateList[i].slice(0, -6);
         let foo = candidateList[i].slice(-5);
         let party = foo.slice(1, 4).toUpperCase();
-        const jimmy = new Object();
-        jimmy.candidate = name;
-        jimmy.voteTotal = overviewVotes[i];
-        jimmy.party = party;
-        overviewArray.push(jimmy);
+        const newData = new Object();
+        newData.candidate = name;
+        newData.voteTotal = overviewVotes[i];
+        newData.party = party;
+        overviewArray.push(newData);
         overviewArray = overviewArray;
       }
     } else {
@@ -123,7 +123,6 @@
       let contestResults = allContestArray.find(
         (element) => element.K === `${raceKey}`
       );
-      // console.log(contestResults);
       transformData(contestResults);
     } else {
       throw new Error(text);
@@ -134,7 +133,6 @@
   const transformData = (contestResults) => {
     let precinctsArray = contestResults.P;
     let votes = contestResults.V;
-    // console.log(contestResults);
     for (let i = 0; i < precinctsArray.length; i++) {
       let precinct = precinctsArray[i];
       let votesArray = [votes[i]];
@@ -161,7 +159,6 @@
     let newObj = new Object();
     newObj.candidates = candidateList;
     newObj.precincts = raceResults;
-    console.log(raceResults);
     paintMap(raceResults);
   };
 

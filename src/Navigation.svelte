@@ -1,19 +1,22 @@
 <script>
   import { onMount } from "svelte";
-
+  let place = "Cobb";
+  let keys = ["10", "30", "50", "70"];
   let showMobile = false;
 
-  const navItems = [];
+  // let navItems = [{ label: "Governor", href: "#10-Cobb-map" }];
 </script>
 
 <main>
   <nav class="navbar">
     <ul>
-      {#each navItems as item}
-        <li>
-          <a href={item.href}>{item.label} </a>
-        </li>
-      {/each}
+      {#if keys}
+        {#each keys as key}
+          <li>
+            <a href="#{key}-{place}-map">{key} </a>
+          </li>
+        {/each}
+      {/if}
     </ul>
   </nav>
 </main>
