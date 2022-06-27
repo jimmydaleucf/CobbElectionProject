@@ -253,7 +253,7 @@
   @media (min-width: 640px) {
     main {
       margin: auto;
-      max-width: 45%;
+      max-width: 100%;
     }
     .map {
       height: 400px;

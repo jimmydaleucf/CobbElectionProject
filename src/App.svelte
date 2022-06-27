@@ -1,5 +1,4 @@
 <script>
-  import Navigation from "./Navigation.svelte";
   import CountyPrecinct from "./CountyPrecinct.svelte";
   export let name;
   let place = "Cobb";
@@ -68,6 +67,7 @@
     list-style-type: none;
     padding-left: 1em;
     padding-right: 1em;
+    justify-content: center;
   }
   ul {
     margin: 0;
@@ -78,7 +78,7 @@
     width: 100%;
     z-index: 1;
     background-color: #0988d7;
-    height: 30px;
+    min-height: 30px;
     overflow: hidden;
   }
   /* .navbar {
@@ -92,9 +92,11 @@
   } */
   @media (max-width: 420px) {
     a {
-      font-size: 0.85em;
+      font-size: 0.95em;
     }
-
+    ul {
+      align-items: center;
+    }
     li {
       padding: 8px;
     }
