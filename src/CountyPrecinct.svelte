@@ -221,7 +221,7 @@
   }
   main {
     margin: auto;
-    width: 100%;
+    max-width: 45%;
   }
   .map-container {
     display: block;
