@@ -9,6 +9,7 @@
   let map;
   let overviewArray = [];
   let overviewVotes;
+  let raceTitle;
   let raceResults = [];
   let headers = ["Candidate", "Total Votes"];
   export let county;
@@ -29,6 +30,7 @@
         svg.setAttribute("width", "100%");
         svg.setAttribute("font-size", "3em");
         svg.setAttribute("style", "max-height:400px");
+        svg.setAttribute("id", `${county}-${raceKey}`);
         svgMarkup = map.innerHTML;
         getOverview();
         getResults();
@@ -63,12 +65,16 @@
               newRow.appendChild(newCell);
               newRow.appendChild(voteCell);
             }
-            let precinctInfo = document.getElementById("precinct-crm");
+            let precinctInfo = document.getElementById(
+              `${raceKey}-${county}-precinct-crm`
+            );
             precinctInfo.innerHTML = `<h3>${id} </h3>`;
             precinctInfo.appendChild(newTable);
           });
           node.addEventListener("mouseleave", () => {
-            document.getElementById("precinct-crm").innerHTML =
+            document.getElementById(
+              `${raceKey}-${county}-precinct-crm`
+            ).innerHTML =
               "<em><br /><br />Hover over the map to view the precinct level results (tap on mobile)</em>";
           });
         });
@@ -88,6 +94,7 @@
       );
       candidateList = contestOverview.CH;
       overviewVotes = contestOverview.V;
+      raceTitle = contestOverview.C;
       for (let i = 0; i < candidateList.length; i++) {
         let name = candidateList[i].slice(0, -6);
         let foo = candidateList[i].slice(-5);
@@ -154,17 +161,18 @@
     let newObj = new Object();
     newObj.candidates = candidateList;
     newObj.precincts = raceResults;
+    console.log(raceResults);
     paintMap(raceResults);
   };
 
   /*This function paints the map using the unified raceResults JSON that was created in the transform function*/
-  const paintMap = (raceResults) => {
+  const paintMap = (raceResults, contestResults) => {
     for (let i = 0; i < raceResults.length; i++) {
       const location = raceResults[i];
       const id = raceResults[i].precinct;
       const winner = raceResults[i].candidates[0]; //add that vote count is greater than zero.
       if (winner.votes > 0) {
-        const mapInstance = document.querySelector("svg");
+        const mapInstance = document.getElementById(`${county}-${raceKey}`);
         const mapPrecinct = mapInstance.getElementById(id);
         let winnerColor = palette[winner.party];
         mapPrecinct.style.fill = winnerColor;
@@ -175,13 +183,14 @@
 </script>
 
 <main>
+  <h2>{raceTitle}</h2>
   <div class="map-container" id="{raceKey}-{county}-container">
     {#if svgMarkup}
       <div class="map" id="{raceKey}-{county}-map" bind:this={map}>
         {@html svgMarkup}
       </div>
     {/if}
-    <div class="crm">
+    <div class="crm" id="{raceKey}-{county}-crm">
       <h3>{county} County Results</h3>
       {#if overviewArray}
         <table>
@@ -196,7 +205,7 @@
           </tbody>
         </table>
       {/if}
-      <div id="precinct-crm" class="">
+      <div id="{raceKey}-{county}-precinct-crm" class="">
         <em
           ><br /><br />Hover over the map to view the precinct level results
           (tap on mobile)</em
