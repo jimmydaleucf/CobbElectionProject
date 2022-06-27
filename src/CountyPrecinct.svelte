@@ -221,7 +221,7 @@
   }
   main {
     margin: auto;
-    max-width: 45%;
+    width: 100%;
   }
   .map-container {
     display: block;
@@ -254,6 +254,10 @@
   }
 
   @media (min-width: 640px) {
+    main {
+      margin: auto;
+      max-width: 45%;
+    }
     .map {
       height: 400px;
     }
@@ -263,7 +267,7 @@
       /* align-items: center; */
     }
     .crm {
-      width: 300px;
+      width: 350px;
       min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;

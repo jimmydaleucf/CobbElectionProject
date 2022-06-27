@@ -10,6 +10,8 @@
   <div class="container-app">
     <CountyPrecinct county="Cobb" raceKey="10" />
     <CountyPrecinct county="Cobb" raceKey="30" />
+    <CountyPrecinct county="Cobb" raceKey="50" />
+    <CountyPrecinct county="Cobb" raceKey="70" />
 
     <div />
   </div>
