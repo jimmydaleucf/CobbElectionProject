@@ -27,24 +27,16 @@
   <!-- <Navigation /> -->
   <h1>Cobb County Election Results 2018</h1>
   <div class="text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nunc nunc,
-    tristique sed pulvinar sed, pellentesque vel nibh. In molestie a ligula vel
-    efficitur. Curabitur non justo a est accumsan eleifend. Sed pulvinar auctor
-    erat, sed scelerisque turpis suscipit quis. Donec volutpat rutrum consequat.
-    Nulla sodales mi semper, vulputate ex vel, commodo purus. Pellentesque nunc
-    dolor, ultricies ut posuere posuere, mattis a tortor. Integer a gravida
-    odio, in scelerisque ex. Suspendisse potenti. Phasellus volutpat, mi sed
-    volutpat aliquet, tortor magna elementum quam, cursus sollicitudin urna
-    nulla ac mauris. Aenean imperdiet molestie sem. Curabitur porta id mauris
-    nec tempus. Sed mi ipsum, scelerisque et felis non, tristique bibendum diam.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla
-    ligula urna, nec faucibus tortor molestie at. Sed maximus convallis risus
-    nec aliquet. Curabitur ultricies vulputate suscipit. Pellentesque mattis
-    rutrum turpis, dapibus pharetra magna pulvinar sit amet. Nullam varius nisl
-    quis nisi eleifend accumsan. Nullam non pellentesque nisi. In condimentum
-    sollicitudin justo, consectetur tempor dolor pharetra nec. Fusce cursus ex
-    et eros placerat ultrices. Suspendisse nunc diam, dapibus sit amet varius
-    at, suscipit ac lorem. Sed vestibulum semper nisi ornare lobortis.
+    <p>
+      Welcome to my page! As an avid follower of politics, I've always been
+      frustrated that there isn't a great site to view precinct level election
+      results for my county. I've decided to put my newly developed software
+      engineering skills to work to create one. Using the data that is available
+      on the Secretary of State's website, I have linked the precincts on the
+      map to their respective results. These results appear as you hover over
+      each one. I plan to also build a site to track live results as they come
+      in on November 8, 2022. <br />Stay tuned!
+    </p>
   </div>
   <div class="container-app">
     {#each keys as { key, label }}
@@ -118,9 +110,9 @@
     overflow: hidden;
   }
   .text {
-    padding: 2em;
     margin-left: 2em;
     margin-right: 2em;
+    font-size: 1.25em;
   }
   .plain {
     font-style: normal;

@@ -45,9 +45,7 @@
             );
             let targetPrecinct = raceResults.find(
               (element) => element.precinct === `${id}`
-            );
-            /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-
+            ); /*This filters the results to only the one with the same precinct name as the path id from the svg. */
             const newTable = document.createElement("table");
             const thead = document.createElement("thead");
             const tbody = document.createElement("tbody");
