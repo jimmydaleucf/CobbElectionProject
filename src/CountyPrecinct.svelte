@@ -256,9 +256,9 @@
       max-width: 45%;
     }
     .map {
-      height: 400px;
     }
     .map-container {
+      min-height: 420px;
       display: flex;
       justify-content: center;
       /* align-items: center; */

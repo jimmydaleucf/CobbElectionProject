@@ -7,6 +7,10 @@
     { key: "30", label: "Lt. Governor" },
     { key: "50", label: "Sec. of State" },
     { key: "70", label: "Attorney General" },
+    { key: "200", label: "U.S. Rep 6" },
+    { key: "220", label: "U.S. Rep 11" },
+    { key: "230", label: "U.S. Rep 13" },
+    { key: "240", label: "State Sen 6" },
   ];
 </script>
 
@@ -24,6 +28,26 @@
   </nav>
   <!-- <Navigation /> -->
   <h1>Cobb County Election Results 2018</h1>
+  <div class="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nunc nunc,
+    tristique sed pulvinar sed, pellentesque vel nibh. In molestie a ligula vel
+    efficitur. Curabitur non justo a est accumsan eleifend. Sed pulvinar auctor
+    erat, sed scelerisque turpis suscipit quis. Donec volutpat rutrum consequat.
+    Nulla sodales mi semper, vulputate ex vel, commodo purus. Pellentesque nunc
+    dolor, ultricies ut posuere posuere, mattis a tortor. Integer a gravida
+    odio, in scelerisque ex. Suspendisse potenti. Phasellus volutpat, mi sed
+    volutpat aliquet, tortor magna elementum quam, cursus sollicitudin urna
+    nulla ac mauris. Aenean imperdiet molestie sem. Curabitur porta id mauris
+    nec tempus. Sed mi ipsum, scelerisque et felis non, tristique bibendum diam.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla
+    ligula urna, nec faucibus tortor molestie at. Sed maximus convallis risus
+    nec aliquet. Curabitur ultricies vulputate suscipit. Pellentesque mattis
+    rutrum turpis, dapibus pharetra magna pulvinar sit amet. Nullam varius nisl
+    quis nisi eleifend accumsan. Nullam non pellentesque nisi. In condimentum
+    sollicitudin justo, consectetur tempor dolor pharetra nec. Fusce cursus ex
+    et eros placerat ultrices. Suspendisse nunc diam, dapibus sit amet varius
+    at, suscipit ac lorem. Sed vestibulum semper nisi ornare lobortis.
+  </div>
   <div class="container-app">
     {#each keys as { key, label }}
       <CountyPrecinct county={place} raceKey={key} />
@@ -53,7 +77,7 @@
   }
   a {
     color: white;
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
   li a:hover {
     color: lightgray;
@@ -81,6 +105,11 @@
     min-height: 30px;
     overflow: hidden;
   }
+  .text {
+    padding: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
   /* .navbar {
     position: fixed;
     top: 0;
@@ -95,7 +124,6 @@
       font-size: 0.95em;
     }
     ul {
-      align-items: center;
     }
     li {
       padding: 8px;
