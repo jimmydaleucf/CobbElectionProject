@@ -110,7 +110,6 @@
           return b.voteTotalNum - a.voteTotalNum;
         });
         overviewArray = overviewArray; /*overviewArray is the county totals */
-        console.log(overviewArray);
       }
     } else {
       throw new Error(text);
