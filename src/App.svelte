@@ -27,16 +27,18 @@
   <!-- <Navigation /> -->
   <h1>Cobb County Election Results 2018</h1>
   <div class="text">
+    <p>Welcome to my page!</p>
     <p>
-      Welcome to my page! As an avid follower of politics, I've always been
-      frustrated that there isn't a great site to view precinct level election
-      results for my county. I've decided to put my newly developed software
-      engineering skills to work to create one. Using the data that is available
-      on the Secretary of State's website, I have linked the precincts on the
-      map to their respective results. These results appear as you hover over
-      each one. I plan to also build a site to track live results as they come
-      in on November 8, 2022. <br />Stay tuned!
+      As an avid follower of politics, I've always been frustrated that there
+      isn't a great site to view precinct level election results for my county.
+      I've decided to put my newly developed software engineering skills to work
+      to create one. Using the data that is available on the Secretary of
+      State's website, I have linked the precincts on the map to their
+      respective results. These results appear as you hover over each one. I
+      plan to also build a site to track live results as they come in on
+      November 8, 2022.
     </p>
+    <p>Stay tuned!</p>
   </div>
   <div class="container-app">
     {#each keys as { key, label }}
