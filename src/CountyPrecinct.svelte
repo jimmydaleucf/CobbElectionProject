@@ -104,7 +104,12 @@
         newData.voteTotal = overviewVotes[i];
         newData.party = party;
         overviewArray.push(newData);
-        overviewArray = overviewArray;
+        console.log(overviewArray); /* need to add sort logic here*/
+        overviewArray.sort(function (a, b) {
+          return b.voteTotal - a.voteTotal;
+        });
+        console.log(overviewArray);
+        overviewArray = overviewArray; /*overviewArray is the county totals */
       }
     } else {
       throw new Error(text);

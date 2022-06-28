@@ -16,15 +16,13 @@
 
 <main>
   <nav class="navbar">
-    <ul>
-      {#if keys}
-        {#each keys as { key, label }}
-          <li>
-            <a href="#{key}-{place}-map">{label} </a>
-          </li>
-        {/each}
-      {/if}
-    </ul>
+    {#if keys}
+      {#each keys as { key, label }}
+        <li>
+          <a href="#{key}-{place}-map">{label} </a>
+        </li>
+      {/each}
+    {/if}
   </nav>
   <!-- <Navigation /> -->
   <h1>Cobb County Election Results 2018</h1>
@@ -54,6 +52,17 @@
     {/each}
 
     <div />
+  </div>
+  <div class="text citation">
+    Data Source: <a
+      class="links"
+      href="https://sos.ga.gov/page/georgia-election-results"
+      >Georgia Secretary of State's Website</a
+    >
+    <span class="plain"> |</span> 2018 County Precinct Map provided by
+    <a class="links" href="https://geo-cobbcountyga.hub.arcgis.com/"
+      >Cobb County GIS</a
+    >
   </div>
 </main>
 
@@ -85,6 +94,7 @@
   ul {
     display: flex;
     justify-content: right;
+    margin: 0;
   }
 
   li {
@@ -94,9 +104,11 @@
     justify-content: center;
   }
   ul {
-    margin: 0;
   }
   .navbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
     position: fixed;
     top: 0;
     width: 100%;
@@ -109,6 +121,17 @@
     padding: 2em;
     margin-left: 2em;
     margin-right: 2em;
+  }
+  .plain {
+    font-style: normal;
+  }
+  .links {
+    color: #0f52ba;
+    font-size: 1em;
+    text-decoration: underline;
+  }
+  .citation {
+    font-style: italic;
   }
   /* .navbar {
     position: fixed;
