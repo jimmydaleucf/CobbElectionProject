@@ -80,7 +80,7 @@
       });
   });
 
-  /*Function to grab overview feed and pull out candidate lists */
+  /*Function to grab overview feed and pull out candidate lists and overview vote totals */
   async function getOverview() {
     const response = await fetch(
       "https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/sum.json?1655850344398"
@@ -100,8 +100,10 @@
         let party = foo.slice(1, 4).toUpperCase();
         const newData = new Object();
         newData.candidate = name;
-        newData.voteTotalNum = overviewVotes[i];
-        newData.voteTotal = overviewVotes[i].toLocaleString();
+        newData.voteTotalNum =
+          overviewVotes[i]; /*object value used only to sort */
+        newData.voteTotal =
+          overviewVotes[i].toLocaleString(); /*add thousands separator */
         newData.party = party;
         overviewArray.push(newData);
         overviewArray.sort(function (a, b) {
