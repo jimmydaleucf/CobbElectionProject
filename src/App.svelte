@@ -114,7 +114,7 @@
     width: 100%;
     z-index: 1;
     background-color: #0988d7;
-    min-height: 30px;
+    min-height: 25px;
     overflow: hidden;
   }
   .text {

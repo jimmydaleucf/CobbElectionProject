@@ -60,7 +60,8 @@
               let name = targetPrecinct.candidates[i].name;
               newCell.innerHTML = `${name}`;
               let voteCell = document.createElement("td");
-              let numberOfVotes = targetPrecinct.candidates[i].votes;
+              let numberOfVotes =
+                targetPrecinct.candidates[i].votes.toLocaleString();
               voteCell.innerHTML = `${numberOfVotes}`;
               newRow.appendChild(newCell);
               newRow.appendChild(voteCell);
@@ -101,14 +102,12 @@
         let party = foo.slice(1, 4).toUpperCase();
         const newData = new Object();
         newData.candidate = name;
-        newData.voteTotal = overviewVotes[i];
+        newData.voteTotal = overviewVotes[i].toLocaleString();
         newData.party = party;
         overviewArray.push(newData);
-        console.log(overviewArray); /* need to add sort logic here*/
         overviewArray.sort(function (a, b) {
           return b.voteTotal - a.voteTotal;
         });
-        console.log(overviewArray);
         overviewArray = overviewArray; /*overviewArray is the county totals */
       }
     } else {
@@ -145,6 +144,7 @@
       for (let i = 0; i < votesArray[0].length; i++) {
         let name = candidateList[i].slice(0, -6);
         let total = votesArray[0][i];
+        console.log(total.toLocaleString());
         let foo = candidateList[i].slice(-5);
         let party = foo.slice(1, 4).toUpperCase();
         const candidateObj = new Object();
