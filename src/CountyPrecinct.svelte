@@ -100,12 +100,15 @@
         let party = foo.slice(1, 4).toUpperCase();
         const newData = new Object();
         newData.candidate = name;
+        newData.voteTotalNum = overviewVotes[i];
         newData.voteTotal = overviewVotes[i].toLocaleString();
         newData.party = party;
         overviewArray.push(newData);
         overviewArray.sort(function (a, b) {
-          return b.voteTotal - a.voteTotal;
+          return b.voteTotalNum - a.voteTotalNum;
         });
+        console.log(overviewArray);
+
         overviewArray = overviewArray; /*overviewArray is the county totals */
       }
     } else {
@@ -142,7 +145,6 @@
       for (let i = 0; i < votesArray[0].length; i++) {
         let name = candidateList[i].slice(0, -6);
         let total = votesArray[0][i];
-        console.log(total.toLocaleString());
         let foo = candidateList[i].slice(-5);
         let party = foo.slice(1, 4).toUpperCase();
         const candidateObj = new Object();
