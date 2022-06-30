@@ -32,11 +32,13 @@
       As an avid follower of politics, I've always been frustrated that there
       isn't a great site to view precinct level election results for my county.
       I've decided to put my newly developed software engineering skills to work
-      to create one. Using the data that is available on the Secretary of
-      State's website, I have linked the precincts on the map to their
-      respective results. These results appear as you hover over each one. I
-      plan to also build a site to track live results as they come in on
-      November 8, 2022.
+      to create one. Using the data that is available on the <a
+        class="links"
+        href="https://sos.ga.gov/page/georgia-election-results"
+        target="_blank">Secretary of State's website</a
+      >, I have linked the precincts on the map to their respective results.
+      These results appear as you hover over each one. I plan to also build a
+      site to track live results as they come in on November 8, 2022.
     </p>
     <p>Stay tuned!</p>
   </div>
@@ -51,11 +53,13 @@
     Data Source: <a
       class="links"
       href="https://sos.ga.gov/page/georgia-election-results"
-      >Georgia Secretary of State's Website</a
+      target="_blank">Georgia Secretary of State's Website</a
     >
     <span class="plain"> |</span> 2018 County Precinct Map provided by
-    <a class="links" href="https://geo-cobbcountyga.hub.arcgis.com/"
-      >Cobb County GIS</a
+    <a
+      class="links"
+      href="https://geo-cobbcountyga.hub.arcgis.com/"
+      target="_blank">Cobb County GIS</a
     >
   </div>
 </main>
