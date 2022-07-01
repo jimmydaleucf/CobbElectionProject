@@ -15,7 +15,12 @@
   export let county;
   export let raceKey;
 
-  let palette = { REP: "#DE8275", DEM: "#6495ED", OTHER: "#FDDA0D" };
+  let palette = {
+    REP: "#DE8275",
+    DEM: "#6495ED",
+    OTHER: "#FDDA0D",
+    TIE: "#808080",
+  };
 
   onMount(() => {
     fetch("./assets/2018/Cobb.svg")
@@ -44,31 +49,36 @@
               "id"
             );
             let targetPrecinct = raceResults.find(
-              (element) => element.precinct === `${id}`
-            ); /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-            const newTable = document.createElement("table");
-            const thead = document.createElement("thead");
-            const tbody = document.createElement("tbody");
-            newTable.appendChild(thead);
-            newTable.appendChild(tbody);
-            for (let i = 0; i < targetPrecinct.candidates.length; i++) {
-              const newRow = document.createElement("tr");
-              tbody.appendChild(newRow);
-              const newCell = document.createElement("td");
-              let name = targetPrecinct.candidates[i].name;
-              newCell.innerHTML = `${name}`;
-              let voteCell = document.createElement("td");
-              let numberOfVotes =
-                targetPrecinct.candidates[i].votes.toLocaleString();
-              voteCell.innerHTML = `${numberOfVotes}`;
-              newRow.appendChild(newCell);
-              newRow.appendChild(voteCell);
-            }
-            let precinctInfo = document.getElementById(
-              `${raceKey}-${county}-precinct-crm`
+              (element) =>
+                element.precinct ===
+                `${id}` /*This filters the results to only the one with the same precinct name as the path id from the svg. */
             );
-            precinctInfo.innerHTML = `<h3>${id} </h3>`;
-            precinctInfo.appendChild(newTable);
+            if (targetPrecinct === undefined) {
+            } else {
+              const newTable = document.createElement("table");
+              const thead = document.createElement("thead");
+              const tbody = document.createElement("tbody");
+              newTable.appendChild(thead);
+              newTable.appendChild(tbody);
+              for (let i = 0; i < targetPrecinct.candidates.length; i++) {
+                const newRow = document.createElement("tr");
+                tbody.appendChild(newRow);
+                const newCell = document.createElement("td");
+                let name = targetPrecinct.candidates[i].name;
+                newCell.innerHTML = `${name}`;
+                let voteCell = document.createElement("td");
+                let numberOfVotes =
+                  targetPrecinct.candidates[i].votes.toLocaleString();
+                voteCell.innerHTML = `${numberOfVotes}`;
+                newRow.appendChild(newCell);
+                newRow.appendChild(voteCell);
+              }
+              let precinctInfo = document.getElementById(
+                `${raceKey}-${county}-precinct-crm`
+              );
+              precinctInfo.innerHTML = `<h3>${id} </h3>`;
+              precinctInfo.appendChild(newTable);
+            }
           });
           node.addEventListener("mouseleave", () => {
             document.getElementById(
@@ -168,15 +178,24 @@
   };
 
   /*This function paints the map using the unified raceResults JSON that was created in the transform function*/
-  const paintMap = (raceResults, contestResults) => {
+  const paintMap = (raceResults) => {
     for (let i = 0; i < raceResults.length; i++) {
       const location = raceResults[i];
       const id = raceResults[i].precinct;
-      const winner = raceResults[i].candidates[0]; //add that vote count is greater than zero.
-      if (winner.votes > 0) {
+      const winner = raceResults[i].candidates[0];
+      if (
+        winner.votes > 0 &&
+        winner.votes !== raceResults[i].candidates[1].votes
+      ) {
+        //add that vote count is greater than zero. and that there isn't a tie.*/
         const mapInstance = document.getElementById(`${county}-${raceKey}`);
         const mapPrecinct = mapInstance.getElementById(id);
         let winnerColor = palette[winner.party];
+        mapPrecinct.style.fill = winnerColor;
+      } else if (winner.votes == raceResults[i].candidates[1].votes) {
+        const mapInstance = document.getElementById(`${county}-${raceKey}`);
+        const mapPrecinct = mapInstance.getElementById(id);
+        let winnerColor = palette["TIE"];
         mapPrecinct.style.fill = winnerColor;
       } else {
       }
@@ -185,7 +204,7 @@
 </script>
 
 <main>
-  <h2>{raceTitle}</h2>
+  <h2 id="crm-title">{raceTitle}</h2>
   <div class="map-container" id="{raceKey}-{county}-container">
     {#if svgMarkup}
       <div class="map" id="{raceKey}-{county}-map" bind:this={map}>
@@ -220,6 +239,7 @@
     fill: white;
     stroke: black;
     margin: 8px;
+    padding-bottom: 20px;
   }
   main {
     margin: auto;
@@ -227,6 +247,8 @@
   }
   .map-container {
     display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   td {
@@ -235,6 +257,11 @@
     text-align: center;
   }
 
+  #crm-title {
+    font-size: 2em;
+    margin: 0px;
+    padding-top: 25px;
+  }
   .precinct-crm {
     padding-top: 0px;
     display: flex;
@@ -245,13 +272,13 @@
 
   .crm {
     background-color: white;
-    margin: 25px;
+    margin: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     max-height: auto;
-    font-size: 1.2em;
-    border-radius: 10%;
+    font-size: 1.25em;
+    border-radius: 3%;
     box-shadow: 5px 5px 5px #555;
   }
 
@@ -261,23 +288,27 @@
       max-width: 45%;
     }
     .map {
+      width: 40%;
+      margin: 15px;
     }
     .map-container {
       min-height: 420px;
       display: flex;
       justify-content: center;
+      align-items: center;
+      padding-top: 5px;
+      padding-bottom: 0px;
+      margin: 0;
+
       /* align-items: center; */
     }
     .crm {
-      width: 350px;
-      min-height: 250px;
       font-size: 1.25em;
       flex-wrap: wrap;
+      width: 40%;
     }
     .precinct-crm {
       justify-content: center;
-      /* padding: 15px; */
-      /* margin: 25px; */
     }
   }
 </style>
