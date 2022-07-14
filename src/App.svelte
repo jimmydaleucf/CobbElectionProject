@@ -1,5 +1,7 @@
 <script>
   import CountyPrecinct from "./CountyPrecinct.svelte";
+  import BurgerMenu from "svelte-burger-menu";
+
   export let name;
   let place = "Cobb";
   let keys = [
@@ -16,16 +18,30 @@
 
 <main>
   <nav class="navbar">
+    <div class="mobile">
+      <BurgerMenu
+        width="35%"
+        background-color="#0000FF"
+        burgerColor="#89CFF0"
+        menuColor="#89CFF0"
+        ><h2><a href="#home">Home</a></h2>
+        {#each keys as { key, label }}
+          <h2>
+            <a href="#{key}-{place}-map">{label} </a>
+          </h2>
+        {/each}
+      </BurgerMenu>
+    </div>
     {#if keys}
       {#each keys as { key, label }}
-        <li>
+        <li class="desktop">
           <a href="#{key}-{place}-map">{label} </a>
         </li>
       {/each}
     {/if}
   </nav>
   <!-- <Navigation /> -->
-  <h1>Cobb County Election Results 2018</h1>
+  <h1 id="home">Cobb County Election Results 2018</h1>
   <div class="text">
     <p>Welcome to my page!</p>
     <p>
@@ -49,7 +65,7 @@
 
     <div />
   </div>
-  <div class="text citation">
+  <div class="text citation" id="footer">
     Data Source: <a
       class="links"
       href="https://sos.ga.gov/page/georgia-election-results"
@@ -101,8 +117,10 @@
     padding-right: 1em;
     justify-content: center;
   }
-  ul {
+  .mobile {
+    display: none;
   }
+
   .navbar {
     display: flex;
     align-items: flex-end;
@@ -111,9 +129,9 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    background-color: #0988d7;
+    background-color: #191970;
     min-height: 25px;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   .text {
     margin-left: 2em;
@@ -131,20 +149,29 @@
   .citation {
     font-style: italic;
   }
-  /* .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    height: 30px;
-    overflow: hidden;
-    width: 100%;
-  } */
+  #footer {
+    padding-bottom: 20px;
+  }
+
   @media (max-width: 420px) {
     a {
       font-size: 0.95em;
     }
-    ul {
+    .mobile {
+      display: block;
+      padding-right: 10px;
+      align-items: flex-end;
+      width: 100%;
+    }
+    .desktop {
+      display: none;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: flex-end;
+      align-items: right;
+      min-height: 50px;
     }
     li {
       padding: 8px;

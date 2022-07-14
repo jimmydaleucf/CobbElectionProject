@@ -11,14 +11,14 @@
   let overviewVotes;
   let raceTitle;
   let raceResults = [];
-  let headers = ["Candidate", "Total Votes"];
+  let headers = ["Candidate", "Party", "Total Votes"];
   export let county;
   export let raceKey;
 
   let palette = {
     REP: "#DE8275",
     DEM: "#6495ED",
-    OTHER: "#FDDA0D",
+    LIB: "#E49B0F",
     TIE: "#808080",
   };
 
@@ -119,7 +119,8 @@
         overviewArray.sort(function (a, b) {
           return b.voteTotalNum - a.voteTotalNum;
         });
-        overviewArray = overviewArray; /*overviewArray is the county totals */
+        overviewArray = overviewArray;
+        console.log(overviewArray); /*overviewArray is the county totals */
       }
     } else {
       throw new Error(text);
@@ -221,8 +222,12 @@
             {/each}
           </thead>
           <tbody>
-            {#each overviewArray as { candidate, voteTotal }}
-              <tr><td>{candidate}</td><td>{voteTotal}</td></tr>{/each}
+            {#each overviewArray as { candidate, party, voteTotal }}
+              <tr
+                ><td>{candidate}</td><td style="color:{palette[party]}"
+                  >{party}</td
+                ><td>{voteTotal}</td></tr
+              >{/each}
           </tbody>
         </table>
       {/if}
@@ -242,8 +247,15 @@
     padding-bottom: 20px;
   }
   main {
-    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
     width: 100%;
+    box-shadow: 3px 3px 3px 3px grey;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #e4d5b7;
   }
   .map-container {
     display: block;
@@ -261,6 +273,7 @@
     font-size: 2em;
     margin: 0px;
     padding-top: 25px;
+    padding: 5px;
   }
   .precinct-crm {
     padding-top: 0px;
@@ -284,12 +297,14 @@
 
   @media (min-width: 640px) {
     main {
-      margin: auto;
+      /* margin : auto; */
       max-width: 45%;
+      margin: 20px;
     }
     .map {
       width: 40%;
       margin: 15px;
+      padding-bottom: 0px;
     }
     .map-container {
       min-height: 420px;
@@ -305,7 +320,7 @@
     .crm {
       font-size: 1.25em;
       flex-wrap: wrap;
-      width: 40%;
+      width: 55%;
     }
     .precinct-crm {
       justify-content: center;
