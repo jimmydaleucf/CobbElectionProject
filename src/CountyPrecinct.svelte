@@ -22,6 +22,7 @@
     TIE: "#808080",
   };
 
+  getOverview();
   fetch("./assets/2018/Cobb.svg")
     .then((res) => res.text())
     .then((res) => {
@@ -36,7 +37,7 @@
       svg.setAttribute("style", "max-height:400px");
       svg.setAttribute("id", `${county}-${raceKey}`);
       svgMarkup = map.innerHTML;
-      getOverview();
+
       getResults();
     })
     .then(() => {
@@ -205,38 +206,40 @@
 </script>
 
 <main>
-  <h2 id="crm-title">{raceTitle}</h2>
-  <div class="map-container" id="{raceKey}-{county}-container">
-    {#if svgMarkup}
-      <div class="map" id="{raceKey}-{county}-map" bind:this={map}>
-        {@html svgMarkup}
-      </div>
-    {/if}
-    <div class="crm" id="{raceKey}-{county}-crm">
-      <h3>{county} County Results</h3>
-      {#if overviewArray}
-        <table>
-          <thead>
-            {#each headers as header}
-              <th class={header}>{header}</th>
-            {/each}
-          </thead>
-          <tbody>
-            {#each overviewArray as { candidate, party, voteTotal }}
-              <tr
-                ><td>{candidate}</td><td style="color:{palette[party]}"
-                  >{party}</td
-                ><td>{voteTotal}</td></tr
-              >{/each}
-          </tbody>
-        </table>
+  {#if raceKey}
+    <h2 id="crm-title">{raceTitle}</h2>
+    <div class="map-container" id="{raceKey}-{county}-container">
+      {#if svgMarkup}
+        <div class="map" id="{raceKey}-{county}-map" bind:this={map}>
+          {@html svgMarkup}
+        </div>
       {/if}
-      <div id="{raceKey}-{county}-precinct-crm" class="precinct-crm">
-        <br /><br /> Hover over the map to view the precinct level results (tap on
-        mobile)
+      <div class="crm" id="{raceKey}-{county}-crm">
+        <h3>{county} County Results</h3>
+        {#if overviewArray}
+          <table>
+            <thead>
+              {#each headers as header}
+                <th class={header}>{header}</th>
+              {/each}
+            </thead>
+            <tbody>
+              {#each overviewArray as { candidate, party, voteTotal }}
+                <tr
+                  ><td>{candidate}</td><td style="color:{palette[party]}"
+                    >{party}</td
+                  ><td>{voteTotal}</td></tr
+                >{/each}
+            </tbody>
+          </table>
+        {/if}
+        <div id="{raceKey}-{county}-precinct-crm" class="precinct-crm">
+          <br /><br /> Hover over the map to view the precinct level results (tap
+          on mobile)
+        </div>
       </div>
     </div>
-  </div>
+  {/if}
 </main>
 
 <style>
