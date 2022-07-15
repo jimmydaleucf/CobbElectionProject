@@ -129,7 +129,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    background-color: #191970;
+    background-color: darkslategray;
     min-height: 25px;
     /* overflow: hidden; */
   }
