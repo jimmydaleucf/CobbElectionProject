@@ -248,8 +248,8 @@
   main {
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     width: 100%;
     box-shadow: 3px 3px 3px 3px grey;
     border-radius: 10px;
