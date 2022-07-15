@@ -119,8 +119,7 @@
         overviewArray.sort(function (a, b) {
           return b.voteTotalNum - a.voteTotalNum;
         });
-        overviewArray = overviewArray;
-        console.log(overviewArray); /*overviewArray is the county totals */
+        overviewArray = overviewArray; /*overviewArray is the county totals */
       }
     } else {
       throw new Error(text);
