@@ -21,8 +21,8 @@
     <div class="mobile">
       <BurgerMenu
         width="35%"
-        background-color="#0000FF"
-        burgerColor="#89CFF0"
+        backgroundColor="#2f4f4f"
+        burgerColor="#ddc7a0"
         menuColor="#89CFF0"
         ><h2><a href="#home">Home</a></h2>
         {#each keys as { key, label }}
