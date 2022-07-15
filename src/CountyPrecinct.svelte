@@ -37,7 +37,6 @@
       svg.setAttribute("style", "max-height:400px");
       svg.setAttribute("id", `${county}-${raceKey}`);
       svgMarkup = map.innerHTML;
-
       getResults();
     })
     .then(() => {
@@ -206,7 +205,7 @@
 </script>
 
 <main>
-  {#if raceKey}
+  {#if raceTitle}
     <h2 id="crm-title">{raceTitle}</h2>
     <div class="map-container" id="{raceKey}-{county}-container">
       {#if svgMarkup}
