@@ -90,7 +90,6 @@
 
   /*Function to grab overview feed and pull out candidate lists and overview vote totals */
   async function getOverview() {
-    console.log("running getOverview");
     const response = await fetch(
       "https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/sum.json?1655850344398"
     );
@@ -127,7 +126,6 @@
 
   /** This function fetches the precinct results feed for all the contests */
   async function getResults() {
-    console.log("running getResults");
     const res = await fetch(
       `https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/details.json?1655858295886`
     );
@@ -146,7 +144,6 @@
 
   /*This function takes the two feeds and transforms them into an array of objects (each precinct results set)*/
   const transformData = (contestResults) => {
-    console.log("running transformData");
     let precinctsArray = contestResults.P;
     let votes = contestResults.V;
     for (let i = 0; i < precinctsArray.length; i++) {
