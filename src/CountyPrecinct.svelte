@@ -22,76 +22,75 @@
     TIE: "#808080",
   };
 
-  onMount(() => {
-    fetch("./assets/2018/Cobb.svg")
-      .then((res) => res.text())
-      .then((res) => {
-        svgMarkup = res;
-        let map = document.createElement("div");
-        map.innerHTML = svgMarkup;
-        let svg = map.querySelector("svg");
-        svg.classList.add("svg-map");
-        svg.setAttribute("height", "100%");
-        svg.setAttribute("width", "100%");
-        svg.setAttribute("font-size", "3em");
-        svg.setAttribute("style", "max-height:400px");
-        svg.setAttribute("id", `${county}-${raceKey}`);
-        svgMarkup = map.innerHTML;
-        getOverview();
-        getResults();
-      })
-      .then(() => {
-        /*Here we add the event listners for the hover to provide precinct data */
-        map.querySelectorAll("path").forEach((node) => {
-          node.addEventListener("mouseenter", () => {
-            let id = node.getAttribute(
-              /*This grabs the precinct from the id field in the svg path */
-              "id"
-            );
-            let targetPrecinct = raceResults.find(
-              (element) =>
-                element.precinct ===
-                `${id}` /*This filters the results to only the one with the same precinct name as the path id from the svg. */
-            );
-            if (targetPrecinct === undefined) {
-            } else {
-              const newTable = document.createElement("table");
-              const thead = document.createElement("thead");
-              const tbody = document.createElement("tbody");
-              newTable.appendChild(thead);
-              newTable.appendChild(tbody);
-              for (let i = 0; i < targetPrecinct.candidates.length; i++) {
-                const newRow = document.createElement("tr");
-                tbody.appendChild(newRow);
-                const newCell = document.createElement("td");
-                let name = targetPrecinct.candidates[i].name;
-                newCell.innerHTML = `${name}`;
-                let voteCell = document.createElement("td");
-                let numberOfVotes =
-                  targetPrecinct.candidates[i].votes.toLocaleString();
-                voteCell.innerHTML = `${numberOfVotes}`;
-                newRow.appendChild(newCell);
-                newRow.appendChild(voteCell);
-              }
-              let precinctInfo = document.getElementById(
-                `${raceKey}-${county}-precinct-crm`
-              );
-              precinctInfo.innerHTML = `<h3>${id} </h3>`;
-              precinctInfo.appendChild(newTable);
+  fetch("./assets/2018/Cobb.svg")
+    .then((res) => res.text())
+    .then((res) => {
+      svgMarkup = res;
+      let map = document.createElement("div");
+      map.innerHTML = svgMarkup;
+      let svg = map.querySelector("svg");
+      svg.classList.add("svg-map");
+      svg.setAttribute("height", "100%");
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("font-size", "3em");
+      svg.setAttribute("style", "max-height:400px");
+      svg.setAttribute("id", `${county}-${raceKey}`);
+      svgMarkup = map.innerHTML;
+      getOverview();
+      getResults();
+    })
+    .then(() => {
+      /*Here we add the event listners for the hover to provide precinct data */
+      map.querySelectorAll("path").forEach((node) => {
+        node.addEventListener("mouseenter", () => {
+          let id = node.getAttribute(
+            /*This grabs the precinct from the id field in the svg path */
+            "id"
+          );
+          let targetPrecinct = raceResults.find(
+            (element) =>
+              element.precinct ===
+              `${id}` /*This filters the results to only the one with the same precinct name as the path id from the svg. */
+          );
+          if (targetPrecinct === undefined) {
+          } else {
+            const newTable = document.createElement("table");
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+            newTable.appendChild(thead);
+            newTable.appendChild(tbody);
+            for (let i = 0; i < targetPrecinct.candidates.length; i++) {
+              const newRow = document.createElement("tr");
+              tbody.appendChild(newRow);
+              const newCell = document.createElement("td");
+              let name = targetPrecinct.candidates[i].name;
+              newCell.innerHTML = `${name}`;
+              let voteCell = document.createElement("td");
+              let numberOfVotes =
+                targetPrecinct.candidates[i].votes.toLocaleString();
+              voteCell.innerHTML = `${numberOfVotes}`;
+              newRow.appendChild(newCell);
+              newRow.appendChild(voteCell);
             }
-          });
-          node.addEventListener("mouseleave", () => {
-            document.getElementById(
+            let precinctInfo = document.getElementById(
               `${raceKey}-${county}-precinct-crm`
-            ).innerHTML =
-              "<br /><br />Hover over the map to view the precinct level results (tap on mobile)";
-          });
+            );
+            precinctInfo.innerHTML = `<h3>${id} </h3>`;
+            precinctInfo.appendChild(newTable);
+          }
+        });
+        node.addEventListener("mouseleave", () => {
+          document.getElementById(
+            `${raceKey}-${county}-precinct-crm`
+          ).innerHTML =
+            "<br /><br />Hover over the map to view the precinct level results (tap on mobile)";
         });
       });
-  });
+    });
 
   /*Function to grab overview feed and pull out candidate lists and overview vote totals */
   async function getOverview() {
+    console.log("running getOverview");
     const response = await fetch(
       "https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/sum.json?1655850344398"
     );
@@ -128,6 +127,7 @@
 
   /** This function fetches the precinct results feed for all the contests */
   async function getResults() {
+    console.log("running getResults");
     const res = await fetch(
       `https://results.enr.clarityelections.com/GA/Cobb/91673/222156/json/details.json?1655858295886`
     );
@@ -146,6 +146,7 @@
 
   /*This function takes the two feeds and transforms them into an array of objects (each precinct results set)*/
   const transformData = (contestResults) => {
+    console.log("running transformData");
     let precinctsArray = contestResults.P;
     let votes = contestResults.V;
     for (let i = 0; i < precinctsArray.length; i++) {
