@@ -294,7 +294,7 @@
     box-shadow: 5px 5px 5px #555;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 1220px) {
     main {
       /* margin : auto; */
       max-width: 45%;
