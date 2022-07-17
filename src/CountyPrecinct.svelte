@@ -42,7 +42,7 @@
     .then(() => {
       /*Here we add the event listners for the hover to provide precinct data */
       map.querySelectorAll("path").forEach((node) => {
-        node.addEventListener("mouseenter", () => {
+        node.addEventListener("mouseover", () => {
           let id = node.getAttribute(
             /*This grabs the precinct from the id field in the svg path */
             "id"
@@ -79,7 +79,7 @@
             precinctInfo.appendChild(newTable);
           }
         });
-        node.addEventListener("mouseleave", () => {
+        node.addEventListener("mouseout", () => {
           document.getElementById(
             `${raceKey}-${county}-precinct-crm`
           ).innerHTML =
