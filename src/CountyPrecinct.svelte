@@ -290,7 +290,7 @@
     flex-direction: column;
     max-height: auto;
     font-size: 1.25em;
-    border-radius: 3%;
+    border-radius: 10px;
     box-shadow: 5px 5px 5px #555;
   }
 

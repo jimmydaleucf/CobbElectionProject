@@ -51,6 +51,25 @@
         {/each}
       </div>
     </div>
+    <div class="dropdown desktop">
+      <button id="dropdown-menu" class="dropbtn"
+        >About Me
+        <div class="caret">
+          <img
+            id="dropdown-icon"
+            style="height:20px"
+            src="/assets/drop-down-25.svg"
+            alt=""
+          />
+        </div>
+      </button>
+      <div class="dropdown-content">
+        <a href="https://github.com/jimmydaleucf" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/jimmy-dale" target="_blank"
+          >LinkedIn</a
+        >
+      </div>
+    </div>
   </nav>
   <!-- <Navigation /> -->
   <h1 id="home">Cobb County Election Results 2018</h1>
