@@ -32,13 +32,25 @@
         {/each}
       </BurgerMenu>
     </div>
-    {#if keys}
-      {#each keys as { key, label }}
-        <li class="desktop">
-          <a href="#{key}-{place}-map">{label} </a>
-        </li>
-      {/each}
-    {/if}
+    <div class="dropdown desktop"><a href="#home">Home</a></div>
+    <div class="dropdown desktop">
+      <button id="dropdown-menu" class="dropbtn"
+        >Select Contest
+        <div class="caret">
+          <img
+            id="dropdown-icon"
+            style="height:20px"
+            src="/assets/drop-down-25.svg"
+            alt=""
+          />
+        </div>
+      </button>
+      <div class="dropdown-content">
+        {#each keys as { key, label }}
+          <a href="#{key}-{place}-map">{label}</a>
+        {/each}
+      </div>
+    </div>
   </nav>
   <!-- <Navigation /> -->
   <h1 id="home">Cobb County Election Results 2018</h1>
@@ -84,6 +96,7 @@
   main {
     text-align: center;
   }
+
   .container-app {
     display: flex;
     flex-wrap: wrap;
@@ -100,7 +113,6 @@
   }
   a {
     color: white;
-    font-size: 1.25em;
   }
   li a:hover {
     color: lightgray;
@@ -120,6 +132,9 @@
   .mobile {
     display: none;
   }
+  .desktop {
+    display: inline;
+  }
 
   .navbar {
     display: flex;
@@ -132,6 +147,15 @@
     background-color: darkslategray;
     min-height: 25px;
     /* overflow: hidden; */
+  }
+
+  .navItem {
+    font-size: 24px;
+    color: white;
+    display: flex;
+    padding-right: 30px;
+    padding-top: 0px;
+    height: 100%;
   }
   .text {
     margin-left: 2em;
@@ -151,6 +175,94 @@
   }
   #footer {
     padding-bottom: 20px;
+  }
+
+  a {
+    /* color: lightgray; */
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+  }
+  .hidden {
+    display: none;
+  }
+  #dropdown-menu {
+    font-size: 24px;
+    color: white;
+    display: flex;
+    padding: 0;
+    padding-top: 3px;
+  }
+  .logo {
+    display: flex;
+    font-size: 2em;
+    padding-bottom: 0;
+    padding-left: 5px;
+  }
+  .caret {
+    padding-left: 3px;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+  li {
+    list-style: none;
+    padding: 10px;
+    padding: 10px;
+    font-size: 2em;
+    display: inline;
+  }
+  .dropdown {
+    float: left;
+    overflow: hidden;
+    font-size: 24px;
+    margin-right: 30px;
+  }
+
+  .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: skyblue;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  .navbar a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: grey;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e4d5b7;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: darkslategray;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  #dropdown-icon {
+    fill: pink;
   }
 
   @media (max-width: 420px) {
