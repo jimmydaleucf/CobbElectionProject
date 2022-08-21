@@ -182,8 +182,9 @@
       const id = raceResults[i].precinct;
       const winner = raceResults[i].candidates[0];
       if (
-        winner.votes > 0 &&
-        winner.votes !== raceResults[i].candidates[1].votes
+        (winner.votes > 0 &&
+          winner.votes !== raceResults[i].candidates.votes) ||
+        (raceResults[i].candidates.length = 1)
       ) {
         //add that vote count is greater than zero. and that there isn't a tie.*/
         const mapInstance = document.getElementById(`${county}-${raceKey}`);

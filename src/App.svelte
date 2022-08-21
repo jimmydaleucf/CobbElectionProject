@@ -13,6 +13,10 @@
     { key: "220", label: "U.S. Rep 11" },
     { key: "230", label: "U.S. Rep 13" },
     { key: "240", label: "State Sen 6" },
+    { key: "260", label: "State Sen 14" },
+    { key: "270", label: "State Sen 32" },
+    { key: "290", label: "State Sen 33" },
+    { key: "300", label: "State Sen 37" },
   ];
 </script>
 
